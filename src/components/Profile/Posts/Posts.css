@@ -1,0 +1,62 @@
+form{
+margin-left:40px; 
+margin-top: 45px;
+width: 70%;
+
+
+}
+.textarea_section{
+ width: 100%;
+ display: flex;
+ 
+}
+.textarea_1{
+ width: 100%;
+ padding: 10px 10px;
+ 
+ min-height: 50px;
+ resize:none;
+ 
+ border:0px;
+ outline:0px;
+ background-color: white;
+ box-shadow: 0px 9.05305px 18.1061px #EDEDF5;
+ border-radius: 7px;
+ 
+ 
+}
+.button_section{
+    
+    margin-top: 5px;
+    margin-right: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  
+}
+.button_to_click{
+    
+    box-shadow: 0px 9.05305px 18.1061px #EDEDF5;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color:white ;
+    text-align: center;
+    width: 90px;
+    font-size: 12px;
+    margin-left: 10px;
+    
+    padding: 10px 10px;
+
+    
+    
+}
+
+.button_to_click:hover {
+    background-color:rgba(26, 41, 175, 0.63) ;
+    transition: 0.7s;
+    color: white;
+    
+}
+.buttons_comment_section{
+    display: flex;
+}

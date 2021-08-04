@@ -1,0 +1,55 @@
+.Dialogs_container{
+    display: flex;
+}
+.dialogs_wrapper{
+    margin-top: 45px;
+    
+}
+.Section_Dialogs{
+ 
+    height: 100vh;
+    overflow-y:scroll ;
+    
+   
+}
+.Section_Dialog{
+    flex-basis: 35%;
+    
+    height: 100vh;
+    overflow-y:scroll ;
+    
+   
+}
+.Section_Dialogs::-webkit-scrollbar {
+    width: 6px;
+    background-color: #EDEDF5;
+  }
+  
+.Section_Dialogs::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: linear-gradient(180deg, rgba(231, 231, 249, 0.5) 0%, rgba(231, 231, 249, 0.75) 37.35%);
+   
+    
+  }
+  
+.Section_Dialogs::-webkit-scrollbar-track {
+   
+    border-radius: 6px;
+    background-color: #f9f9fd;
+  }
+  
+.Content_dialogs{
+    margin-left:  40px;
+    margin-top:40px;
+    font-size: 30px;
+    width: 85%;
+  
+}
+.Content_dialog{
+    margin-left:  40px;
+    margin-top:40px;
+    font-size: 30px;
+    width: 90%;
+   
+    
+}

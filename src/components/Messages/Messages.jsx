@@ -1,4 +1,6 @@
 import React from 'react';
+import Posts from '../Profile/Posts/Posts';
+
 import Dialog_long from './Dialogs_Type/Dialog_long';
 import Dialog_short from './Dialogs_Type/Dialog_short.jsx';
 import './Messages.css';
@@ -48,6 +50,13 @@ function Messages(props) {
 
                          </div>
 
+                       
+                    </div>
+                    <div className='Section_addMessage'>
+                      <div className='addMessage_wrapper'>
+                          <textarea className="addMessage_textarea" placeholder="write your message"></textarea>
+                          <div className='addMessage_button'>sent</div>
+                      </div>
                     </div>
                 </section>    
 

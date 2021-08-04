@@ -2,7 +2,7 @@ import React from 'react';
 import './Posts.css';
 
 
-function Posts() {
+function Posts(props) {
     let newPostElement=React.createRef();
     let addPost = () =>{
         let text=newPostElement.current.value;

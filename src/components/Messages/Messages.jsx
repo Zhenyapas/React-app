@@ -18,6 +18,12 @@ function Messages(props) {
     );
     let Dialog = props.message.map( (obj) => <Dialog_long message={obj.message} name={obj.name} img={obj.img} id={obj.id} />
     );
+    let newMessageElement=React.createRef();
+    let addPost = () =>{
+        let text=newMessageElement.current.value;
+        alert(text);
+        newMessageElement.current.value='';
+    };
 
     return(
         <section>
@@ -54,8 +60,8 @@ function Messages(props) {
                     </div>
                     <div className='Section_addMessage'>
                       <div className='addMessage_wrapper'>
-                          <textarea className="addMessage_textarea" placeholder="write your message"></textarea>
-                          <div className='addMessage_button'>sent</div>
+                          <textarea ref={newMessageElement} className="addMessage_textarea" placeholder="write your message"></textarea>
+                          <div className='addMessage_button' onClick={addPost}>send</div>
                       </div>
                     </div>
                 </section>    

@@ -1,5 +1,7 @@
-
+import {rerenderEntireTree} from '../Render';
 let state = {
+
+   
 
     infoData :[
         {
@@ -69,5 +71,12 @@ let state = {
             }
             ]
 };
-
+export let addPost = (text) => {
+    let obj = {
+      'likes': '0',
+      'post' : text
+    }
+    state.postInfo.push(obj);
+    rerenderEntireTree(state);
+};
 export default state;

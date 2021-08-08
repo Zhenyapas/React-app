@@ -14,7 +14,7 @@ function Profile(props) {
     <section>
         <div className='Content'>Hello, {props.state.myName.name}. Whats new?</div>
 
-        <Posts state={props.state}/>
+        <Posts state={props.state} addPost={props.addPost}/>
       
         
 

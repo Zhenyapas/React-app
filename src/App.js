@@ -19,7 +19,7 @@ function App(props) {
 
         <div className="wrapper">
           <div class='nav-section'></div>
-          <Route path='/Profile' render={ () => <Profile   state={props.state} addPost={props.addPost} />} />
+          <Route path='/Profile' render={ () => <Profile  state={props.state}  />} />
           <Route path='/Messages'render={ () => <Messages info={props.state.infoData} message={props.state.messageData4} />} />
         </div>
 

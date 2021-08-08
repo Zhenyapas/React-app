@@ -1,6 +1,21 @@
 import {rerenderEntireTree} from '../Render';
 let state = {
 
+   func : {
+
+    addPost1 : (text) => {
+       
+        let obj = {
+            'likes': '0',
+            'post' : text
+          }
+          state.postInfo.push(obj);
+          rerenderEntireTree(state);
+
+    },
+
+   },
+
    
 
     infoData :[
@@ -71,12 +86,5 @@ let state = {
             }
             ]
 };
-export let addPost = (text) => {
-    let obj = {
-      'likes': '0',
-      'post' : text
-    }
-    state.postInfo.push(obj);
-    rerenderEntireTree(state);
-};
+
 export default state;

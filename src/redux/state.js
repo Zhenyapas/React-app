@@ -13,6 +13,12 @@ let state = {
           rerenderEntireTree(state);
 
     },
+    changeTextareaPosts: (text) => {
+        
+        state.textareaPosts = text;
+        rerenderEntireTree(state);
+
+    },
 
    },
 
@@ -84,7 +90,8 @@ let state = {
             {'likes': '15',
               'post' : 'You got it!'
             }
-            ]
+         ],
+    textareaPosts: ''   ,  
 };
 
 export default state;

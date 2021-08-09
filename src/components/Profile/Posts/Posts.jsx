@@ -10,10 +10,15 @@ function Posts(props) {
          newPostElement.current.value='';
         
     }
+    let changeTextarea = () => {
+        let text=newPostElement.current.value;
+        props.state.func.changeTextareaPosts(text);
+
+    }
     return (
         <form>
             <div class="textarea_section">
-                <textarea  ref={newPostElement}  className="textarea_1"  placeholder="What's on your mind?">
+                <textarea  ref={newPostElement} onChange={changeTextarea} value={props.state.textarea} className="textarea_1"  placeholder="What's on your mind?">
               
                 </textarea>
             </div>

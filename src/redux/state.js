@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from '../Render';
+let rerenderEntireTree = () =>{
+
+};
 let state = {
 
    func : {
@@ -10,15 +12,18 @@ let state = {
             'post' : text
           }
           state.postInfo.push(obj);
-          rerenderEntireTree(state);
+          rerenderEntireTree();
 
     },
     changeTextareaPosts: (text) => {
         
         state.textareaPosts = text;
-        rerenderEntireTree(state);
+        rerenderEntireTree();
 
     },
+    subscribe: (observer) => {
+        rerenderEntireTree = observer;
+    }
 
    },
 

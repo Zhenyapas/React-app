@@ -15,12 +15,12 @@ function App(props) {
     
     
      <div>
-      <Navigation state={props.state}  />
+      <Navigation state={props.state.getState()}  />
 
         <div className="wrapper">
           <div class='nav-section'></div>
-          <Route path='/Profile' render={ () => <Profile  state={props.state}  />} />
-          <Route path='/Messages'render={ () => <Messages info={props.state.infoData} message={props.state.messageData4} />} />
+          <Route path='/Profile' render={ () => <Profile  state={props.state} dispatch={props.dispatch}  />} />
+          <Route path='/Messages'render={ () => <Messages state={props.state} dispatch={props.dispatch} />} />
         </div>
 
     </div>

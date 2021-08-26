@@ -5,20 +5,21 @@ import './Posts.css';
 function Posts(props) {
     let newPostElement=React.createRef();
     let addPost = () => {
-        let text=newPostElement.current.value;
-         props.state.func.addPost1(text);
-         newPostElement.current.value='';
+        
+         props.dispatch({type:'ADD-POST'});
+        
         
     }
     let changeTextarea = () => {
-        let text=newPostElement.current.value;
-        props.state.func.changeTextareaPosts(text);
+       let text=newPostElement.current.value;
+      
+        props.dispatch({type:'UPDATE-NEW-POST-TEXT', newText: text});
 
     }
     return (
         <form>
             <div class="textarea_section">
-                <textarea  ref={newPostElement} onChange={changeTextarea} value={props.state.textarea} className="textarea_1"  placeholder="What's on your mind?">
+                <textarea  ref={newPostElement} onChange={changeTextarea} value={props.state.getState().textareaPosts} className="textarea_1"  placeholder="What's on your mind?">
               
                 </textarea>
             </div>

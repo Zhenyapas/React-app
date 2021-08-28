@@ -19,7 +19,7 @@ function Posts(props) {
     return (
         <form>
             <div class="textarea_section">
-                <textarea  ref={newPostElement} onChange={changeTextarea} value={props.state.getState().textareaPosts} className="textarea_1"  placeholder="What's on your mind?">
+                <textarea  ref={newPostElement} onChange={changeTextarea} value={props.state.profilePage.textareaPosts} className="textarea_1"  placeholder="What's on your mind?">
               
                 </textarea>
             </div>

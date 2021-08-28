@@ -15,7 +15,7 @@ function App(props) {
     
     
      <div>
-      <Navigation state={props.state.getState()}  />
+      <Navigation state={props.state}  />
 
         <div className="wrapper">
           <div class='nav-section'></div>

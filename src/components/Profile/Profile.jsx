@@ -7,12 +7,12 @@ import './Profile.css';
   
 function Profile(props) {
   
-  let my_post=props.state.getState().postInfo.map( (el) => <MyPost likes={el.likes} posts={el.post}/>);
+  let my_post=props.state.profilePage.postInfo.map( (el) => <MyPost likes={el.likes} posts={el.post}/>);
   
     return(
 
     <section>
-        <div className='Content'>Hello, {props.state.getState().myName.name}. Whats new?</div>
+        <div className='Content'>Hello, {props.state.profilePage.myName.name}. Whats new?</div>
 
         <Posts state={props.state} dispatch={props.dispatch} />
       

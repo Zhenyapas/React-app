@@ -5,26 +5,8 @@ let store = {
     _callSubscriber() {
 
     },
-    addPost1(newtext) {
-       
-        let obj = {
-            'likes': '0',
-            'post' : newtext
-          }
-          this._state.postInfo.push(obj);
-          this._callSubscriber();
-
-    },
-    changeTextareaDialog(text) {
-        this._state.textareaDialog = text;
-        this._callSubscriber();
-    },
-    changeTextareaPosts(text) {
-        
-        this._state.textareaPosts = text;
-        this._callSubscriber();
-
-    },
+   
+   
     subscribe(observer) {
         this._callSubscriber = observer;
     },
@@ -36,27 +18,27 @@ let store = {
         if (action.type === 'ADD-POST'){
             let obj = {
                 'likes': '0',
-                'post' : this._state.textareaPosts
+                'post' : this._state.profilePage.textareaPosts
               }
-              this._state.postInfo.push(obj);
-              this._state.textareaPosts='';
+              if (this._state.profilePage.textareaPosts !== '') this._state.profilePage.postInfo.push(obj);
+              this._state.profilePage.textareaPosts='';
               this._callSubscriber(this._state);
 
         } else if (action.type === 'UPDATE-NEW-POST-TEXT'){
-            this._state.textareaPosts = action.newText;
+            this._state.profilePage.textareaPosts = action.newText;
             this._callSubscriber(this._state);
         } else if (action.type === 'ADD-MESSAGE'){
             let obj = {
                 'img': 'https://images.unsplash.com/photo-1523419409543-a5e549c1faa8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2743&q=80',
                 'name': 'Me',
-                'message' : this._state.textareaDialog,
+                'message' : this._state.dialogsPage.textareaDialog,
               }
-              if (this._state.textareaDialog !== '') this._state.messageData4.push(obj);
-              this._state.textareaDialog='';
+              if (this._state.dialogsPage.textareaDialog !== '') this._state.dialogsPage.messageData4.push(obj);
+              this._state.dialogsPage.textareaDialog='';
               this._callSubscriber(this._state);
          }      
          else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT'){
-            this._state.textareaDialog = action.newMessageText;
+            this._state.dialogsPage.textareaDialog = action.newMessageText;
             this._callSubscriber(this._state);
         }
 
@@ -66,7 +48,8 @@ let store = {
 
    
    _state : {
-        infoData :[
+        dialogsPage : {
+         infoData :[
             {
                 'id': '1',
                 'message':'Hey, how are you?',
@@ -97,7 +80,7 @@ let store = {
             },
             
         ],
-        messageData4 : [
+         messageData4 : [
                 {
                     'id': '4',
                     'message':'Hey',
@@ -112,11 +95,20 @@ let store = {
                     'img':'https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY3MDUxMjkzMjI1OTIwMTcz/brad-pitt-attends-the-premiere-of-20th-century-foxs--square.jpg',
                 },
             ],
-        myName : {
+            textareaDialog: '',
+        },
+        navBar:{   
+         myName : {
                 'name' : 'Zhenya Pas',
                 'countMessages' : '12'
-            },  
-        postInfo : [
+            },
+        },    
+        profilePage : {    
+         myName : {
+                'name' : 'Zhenya Pas',
+                'countMessages' : '12'
+            },       
+         postInfo : [
                 {'likes': '8',
                 'post' : 'It is not simple as I gess!'
                 },
@@ -130,7 +122,9 @@ let store = {
                 'post' : 'You got it!'
                 }
             ],
-       
+      
+         textareaPosts: '',
+        },
      }
 };
 

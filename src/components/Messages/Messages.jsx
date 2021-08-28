@@ -12,9 +12,9 @@ import './Messages.css';
 
 function Messages(props) {
 
-    let Dialogs = props.state.getState().infoData.map( (obj) => <Dialog_short message={obj.message} name={obj.name} img={obj.img} id={obj.id}/>
+    let Dialogs = props.state.dialogsPage.infoData.map( (obj) => <Dialog_short message={obj.message} name={obj.name} img={obj.img} id={obj.id}/>
     );
-    let Dialog = props.state.getState().messageData4.map( (obj) => <Dialog_long message={obj.message} name={obj.name} img={obj.img} id={obj.id} />
+    let Dialog = props.state.dialogsPage.messageData4.map( (obj) => <Dialog_long message={obj.message} name={obj.name} img={obj.img} id={obj.id} />
     );
     let newMessageElement=React.createRef();
     let addPost = () =>{
@@ -47,7 +47,7 @@ function Messages(props) {
                 <section className='Section_Dialog'>
                     <div className='Content_dialog'>
                         
-                         <div>{props.state.getState().messageData4[0].name}</div>
+                         <div>{props.state.dialogsPage.messageData4[0].name}</div>
 
 
                          <div className='dialogs_wrapper'> 
@@ -60,7 +60,7 @@ function Messages(props) {
                     </div>
                     <div className='Section_addMessage'>
                       <div className='addMessage_wrapper'>
-                          <textarea ref={newMessageElement} onChange={changeTextarea} value={props.state.getState().textareaDialog} className="addMessage_textarea" placeholder="write your message"></textarea>
+                          <textarea ref={newMessageElement} onChange={changeTextarea} value={props.state.dialogsPage.textareaDialog} className="addMessage_textarea" placeholder="write your message"></textarea>
                           <div className='addMessage_button' onClick={addPost}>send</div>
                       </div>
                     </div>

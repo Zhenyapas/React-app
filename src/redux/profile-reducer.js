@@ -1,5 +1,5 @@
 let initialState = {
-    profilePage : {    
+       
         myName : {
                'name' : 'Zhenya Pas',
                'countMessages' : '12'
@@ -20,7 +20,7 @@ let initialState = {
            ],
      
         textareaPosts: '',
-       },
+       
 }
 const profileReducer = (state = initialState, action) => {
 
@@ -30,7 +30,7 @@ const profileReducer = (state = initialState, action) => {
             'likes': '0',
             'post' : state.textareaPosts
           }
-          state.postInfo.push(obj);
+          if (state.textareaPosts !== '') state.postInfo.push(obj);
           state.textareaPosts='';
          return state;
       case 'UPDATE-NEW-POST-TEXT':

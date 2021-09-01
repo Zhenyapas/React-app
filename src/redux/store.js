@@ -1,3 +1,6 @@
+import dialogsReducer from "./message-reducer";
+import navBarReducer from "./navBar-reducer";
+import profileReducer from "./profile-reducer";
 
 let store = {
 
@@ -15,7 +18,12 @@ let store = {
     },
 
     dispatch(action){ 
-        if (action.type === 'ADD-POST'){
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.navBar = navBarReducer(this._state.navBar, action);
+
+/*         if (action.type === 'ADD-POST'){
             let obj = {
                 'likes': '0',
                 'post' : this._state.profilePage.textareaPosts
@@ -40,7 +48,8 @@ let store = {
          else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT'){
             this._state.dialogsPage.textareaDialog = action.newMessageText;
             this._callSubscriber(this._state);
-        }
+        } */
+        this._callSubscriber(this._state);
 
     }, 
 

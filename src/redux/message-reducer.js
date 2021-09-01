@@ -1,5 +1,5 @@
 let initialState = {
-    dialogsPage : {
+   
         infoData :[
            {
                'id': '1',
@@ -47,7 +47,7 @@ let initialState = {
                },
            ],
            textareaDialog: '',
-       },
+      
 }
 const dialogsReducer = (state = initialState, action) => {
 

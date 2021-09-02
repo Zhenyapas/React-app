@@ -8,13 +8,13 @@ let initialState = {
                {'likes': '8',
                'post' : 'It is not simple as I gess!'
                },
-               {'likes': '15',
+               {'likes': '1',
                'post' : 'Just work!'
                },
-               {'likes': '15',
+               {'likes': '3',
                'post' : 'I\'ve done it!'
                },
-               {'likes': '15',
+               {'likes': '8',
                'post' : 'You got it!'
                }
            ],

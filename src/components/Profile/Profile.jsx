@@ -1,6 +1,7 @@
 import React from 'react';
 import MyPost from './Posts/MyPost.jsx';
 import Posts from './Posts/Posts.jsx';
+import PostsContainer from './Posts/PostsContainer.jsx';
 import './Profile.css';
 
   
@@ -14,7 +15,7 @@ function Profile(props) {
     <section>
         <div className='Content'>Hello, {props.state.profilePage.myName.name}. Whats new?</div>
 
-        <Posts state={props.state} dispatch={props.dispatch} />
+        <PostsContainer state={props.state} dispatch={props.dispatch} />
       
         
 

@@ -6,14 +6,16 @@ function Posts(props) {
     let newPostElement=React.createRef();
     let addPost = () => {
         
-         props.dispatch({type:'ADD-POST'});
+        props.addPost();
+        /*  props.dispatch({type:'ADD-POST'}); */
         
         
     }
     let changeTextarea = () => {
        let text=newPostElement.current.value;
+       props.updateNewPostText(text);
       
-        props.dispatch({type:'UPDATE-NEW-POST-TEXT', newText: text});
+       /*  props.dispatch({type:'UPDATE-NEW-POST-TEXT', newText: text}); */
 
     }
     return (

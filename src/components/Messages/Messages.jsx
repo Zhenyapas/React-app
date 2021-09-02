@@ -18,11 +18,11 @@ function Messages(props) {
     );
     let newMessageElement=React.createRef();
     let addPost = () =>{
-      props.dispatch({type:'ADD-MESSAGE'})
+      props.addMessage();
     };
     let changeTextarea = () => {
         let text = newMessageElement.current.value;
-        props.dispatch({type:'UPDATE-NEW-MESSAGE-TEXT', newMessageText: text});
+        props.changeMessageTextarea(text);
     };
 
     return(

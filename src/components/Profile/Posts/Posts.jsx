@@ -7,7 +7,7 @@ function Posts(props) {
     let addPost = () => {
         
         props.addPost();
-        /*  props.dispatch({type:'ADD-POST'}); */
+       
         
         
     }
@@ -15,13 +15,13 @@ function Posts(props) {
        let text=newPostElement.current.value;
        props.updateNewPostText(text);
       
-       /*  props.dispatch({type:'UPDATE-NEW-POST-TEXT', newText: text}); */
+      
 
     }
     return (
         <form>
             <div class="textarea_section">
-                <textarea  ref={newPostElement} onChange={changeTextarea} value={props.state.profilePage.textareaPosts} className="textarea_1"  placeholder="What's on your mind?">
+                <textarea  ref={newPostElement} onChange={changeTextarea} value={props.textareaPosts} className="textarea_1"  placeholder="What's on your mind?">
               
                 </textarea>
             </div>

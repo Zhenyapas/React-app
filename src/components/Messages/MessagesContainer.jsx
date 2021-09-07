@@ -1,28 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Messages from './Messages';
 import './Messages.css';
 
 
+let mapStateToProps = (state) => {
+    return {
 
+        infoData : state.dialogsPage.infoData,
+        messageData4: state.dialogsPage.messageData4,
+        textareaDialog:state.dialogsPage.textareaDialog
 
+    }
+};
+let mapDispatchToProps = (dispatch) => {
+    return {
+        changeMessageTextarea: (text) => {
 
+           dispatch({type:'UPDATE-NEW-MESSAGE-TEXT', newMessageText: text});
 
+        }, 
+        addMessage: () => {
 
+           dispatch({type:'ADD-MESSAGE'})
 
-function MessagesContainer(props) {
+        }
+    }
+};
+const MessagesContainer = connect(mapStateToProps,mapDispatchToProps)(Messages);
 
-   
-    let addMessage = () =>{
-      props.dispatch({type:'ADD-MESSAGE'})
-    };
-    let changeTextarea = (text) => {
-        
-        props.dispatch({type:'UPDATE-NEW-MESSAGE-TEXT', newMessageText: text});
-    };
-
-    return(
-        <Messages state={props.state} changeMessageTextarea={changeTextarea} addMessage={addMessage}/>
-    
-    );
-}
 export default MessagesContainer;

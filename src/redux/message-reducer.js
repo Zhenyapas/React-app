@@ -43,27 +43,34 @@ let initialState = {
                
                    'message':'Will you go to the beach?',
                    'name':'Bradd Pitt',
-                   'img':'https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY3MDUxMjkzMjI1OTIwMTcz/brad-pitt-attends-the-premiere-of-20th-century-foxs--square.jpg',
+                   img:'https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY3MDUxMjkzMjI1OTIwMTcz/brad-pitt-attends-the-premiere-of-20th-century-foxs--square.jpg',
                },
            ],
            textareaDialog: '',
       
 }
 const dialogsReducer = (state = initialState, action) => {
-
+    let stateCopy;
     switch(action.type ){
+        
         case 'ADD-MESSAGE':
+            stateCopy = {
+                ...state,
+                messageData4: [...state.messageData4]
+            };
             let obj = {
             'img': 'https://images.unsplash.com/photo-1523419409543-a5e549c1faa8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2743&q=80',
             'name': 'Me',
-            'message' : state.textareaDialog,
-          }
-            if (state.textareaDialog !== '') state.messageData4.push(obj);
-            state.textareaDialog='';
-            return state;
+            'message' : stateCopy.textareaDialog,
+          };
+            if (stateCopy.textareaDialog !== '') stateCopy.messageData4.push(obj);
+            stateCopy.textareaDialog='';
+            return stateCopy;
         case 'UPDATE-NEW-MESSAGE-TEXT' :
-            state.textareaDialog = action.newMessageText; 
-            return state;
+            return {
+                ...state,
+                textareaDialog:action.newMessageText
+            };
         default:
             return state;      
           

@@ -2,25 +2,29 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 import MessagesContainer from './components/Messages/MessagesContainer';
-import Navigation from './components/Navigation/Navigation.jsx';
-
-import Profile from './components/Profile/Profile.jsx';
+import NavigationContainer from './components/Navigation/NavigationContainer';
 
 
+import ProfileContainer from './components/Profile/ProfileContainer';
+
+import UsersContainer from './components/Users/UsersContainer';
 
 
 
-function App(props) {
+
+
+function App() {
   return (
     
     
      <div>
-      <Navigation state={props.state}  />
+      <NavigationContainer  />
 
         <div className="wrapper">
           <div class='nav-section'></div>
-          <Route path='/Profile' render={ () => <Profile  state={props.state} dispatch={props.dispatch}  />} />
-          <Route path='/Messages'render={ () => <MessagesContainer state={props.state} dispatch={props.dispatch} />} />
+          <Route path='/Profile' render={ () => <ProfileContainer />} />
+          <Route path='/Messages'render={ () => <MessagesContainer  />} />
+          <Route path='/Users' render={ () => <UsersContainer  />} />
         </div>
 
     </div>

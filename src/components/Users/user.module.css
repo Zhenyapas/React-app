@@ -4,11 +4,11 @@
         
     margin-top: 9px;
    
-    width: 100%;
+    width: 60%;
     display: flex;
     justify-content: flex-end;
-  
     align-items: center;
+    
     
     
   
@@ -20,7 +20,7 @@
     cursor: pointer;
     background-color:white ;
     
-    width: 90px;
+    
     
     margin-left: 10px;
     padding: 10px 10px;
@@ -31,6 +31,44 @@
     
     
 }
+.button_followed_true{
+    font-size: 13px;
+    
+    margin-left: 0px;
+    width: 50px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+
+}
+.button_followed_false{
+    font-size: 13px;
+    
+    margin-left: 0px;
+    width: 50px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+
+}
+.button_followed_true:hover {
+    background-color:rgba(26, 41, 175, 0.63) ;
+    transition: 0.7s;
+    color: white;
+    
+}
+.button_followed_false:hover {
+    background-color:rgba(226, 21, 106, 0.63) ;
+    transition: 0.7s;
+    color: white;
+}
+
 
 .User_avatar{
     font-size: 13px;
@@ -79,8 +117,10 @@ margin-left: 15px;
 display: flex;
 }
 .buttons_wrapper{
-display:flex;
-align-items: flex-end;
+
+display: flex;
+align-items: center;
+
 }
 .User_name{
     font-weight: bold;

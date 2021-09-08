@@ -2,7 +2,7 @@ let img1='https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progre
            
 let initialState = {
     users: [
-    {id:1,  followed:true, fullName: 'Brad Pitt', status:'Bussy', location: {city:'LA', country: 'USA'} , img:img1},
+    {id:1,  followed:false, fullName: 'Brad Pitt', status:'Bussy', location: {city:'LA', country: 'USA'} , img:img1},
     {id:2, followed:true, fullName: 'Vladimir', status:'Bussy', location: {city:'Kiev', country: 'Ukraine'}, img:img1},
     {id:3, followed:true, fullName: 'Brad', status:'Bussy', location: {city:'Kiev', country: 'Ukraine'},img:img1 },
     ],
@@ -14,7 +14,7 @@ const usersReducer = (state = initialState, action) => {
 
     switch(action.type) {
 
-      /*   case followActionCreator :
+         case 'FOLLOW' :
             stateCopy = {
                 ...state,
                 users: state.users.map(user => {
@@ -28,8 +28,10 @@ const usersReducer = (state = initialState, action) => {
 
             }
 
+            return stateCopy;
 
-         case unfollowActionCreator :
+
+         case 'UNFOLLOW' :
             stateCopy = {
                 ...state,
                 users: state.users.map(user => {
@@ -42,14 +44,15 @@ const usersReducer = (state = initialState, action) => {
                 })
     
             }
- */
+            return stateCopy;
+
         default:
              return state;
     }
 
 }
 
-/* export const followActionCreator  = () => ({type:'FOLLOW', userId:id});
-export const unfollowActionCreator  = () => ({type:'UNFOLLOW', userId:id}); */
+export const followActionCreator  = (id) => ({type:'FOLLOW', userId:id});
+export const unfollowActionCreator  = (id) => ({type:'UNFOLLOW', userId:id}); 
 
 export default usersReducer;

@@ -11,13 +11,11 @@ function User (props){
         let isFollowed = (props.followed) ?  'Follow' : 'Unfollow';
         let isFollowedButton = (props.followed) ?  classes.button_followed_true:classes.button_followed_false;
 
-       let changeFollowedState = () => {
+            let changeFollowedState = () => {
 
-    
-         
-         props.changeFollowedState(props.id);
-          
-        }
+                (props.followed) ? props.changeToUnfollow(props.id) : props.changeToFollow(props.id);
+
+            }
        
     
 
@@ -37,8 +35,9 @@ function User (props){
          
 
           <div className={classes.textarea_coments}>
-                <NavLink to='#' className={classes.User_name} activeClassName='activeName'>{props.name}  :</NavLink>
-                <div className={classes.User_message}>{props.message} </div> 
+                <NavLink to='#' className={classes.User_name} activeClassName='activeName'>{props.name}  </NavLink>
+                <div className={classes.User_message}>Status:{props.message}.</div> 
+                <div className={classes.User_message}>From {props.location.city} / {props.location.country} .</div> 
                  
           </div>
 

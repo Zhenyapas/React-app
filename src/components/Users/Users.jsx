@@ -18,7 +18,9 @@ import User from './user';
 
 function Users(props) {
 
-    let usersList = props.users.map( (obj) => <User message={obj.status} name={obj.fullName} img={obj.img} id={obj.id} followed={obj.followed} changeFollowedState={obj.changeFollowedState} />);
+    let usersList = props.users.map( (obj) => <User message={obj.status} name={obj.fullName}
+     img={obj.img} id={obj.id} followed={obj.followed} changeToFollow={props.changeToFollow} 
+     changeToUnfollow={props.changeToUnfollow} location={obj.location}  />);
 
     return(
         <section>

@@ -1,26 +1,25 @@
 import React from 'react';
-import Dialog_short from '../Messages/Dialogs_Type/Dialog_short';
 import User from './user';
-
-
-
-
-
-
-
-
-
-
-
+import * as axios from 'axios'; 
 
 
 
 
 function Users(props) {
 
-    let usersList = props.users.map( (obj) => <User message={obj.status} name={obj.fullName}
-     img={obj.img} id={obj.id} followed={obj.followed} changeToFollow={props.changeToFollow} 
-     changeToUnfollow={props.changeToUnfollow} location={obj.location}  />);
+    if(props.users.length === 0) {
+
+         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+             
+            
+            props.setUsers(response.data.items);
+             
+        });
+    }    
+
+    let usersList = props.users.map( (obj) => <User  u={obj}
+      followed={obj.followed} changeToFollow={props.changeToFollow} 
+     changeToUnfollow={props.changeToUnfollow}   />);
 
     return(
         <section>

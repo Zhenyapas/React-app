@@ -5,24 +5,37 @@ import * as axios from 'axios';
 
 
 
-function Users(props) {
 
-    if(props.users.length === 0) {
+class Users extends React.Component {
 
-         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-             
+    
+
+    componentDidMount() {
+
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
             
-            props.setUsers(response.data.items);
+           
+            this.props.setUsers(response.data.items);
              
-        });
-    }    
+         });
+         
 
-    let usersList = props.users.map( (obj) => <User  u={obj}
-      followed={obj.followed} changeToFollow={props.changeToFollow} 
-     changeToUnfollow={props.changeToUnfollow}   />);
+    }
+    
+   
+    
+    
 
-    return(
-        <section>
+    render() {
+
+        this.usersList = this.props.users.map( (obj) => <User  u={obj}
+        followed={obj.followed} changeToFollow={this.props.changeToFollow} 
+       changeToUnfollow={this.props.changeToUnfollow}   />);
+
+     return(
+         
+        <section> 
+           
             <div className='Dialogs_container'>
                 <section className='Section_Dialogs'>
                     <div className='Content_dialogs'>
@@ -31,7 +44,7 @@ function Users(props) {
 
                         <div className='dialogs_wrapper'> 
                         
-                            {usersList}
+                            {this.usersList}
 
                            
                     
@@ -49,8 +62,9 @@ function Users(props) {
             </div>
 
         </section>
-    )
- }    
+     )
+    }
+}    
 
 
 

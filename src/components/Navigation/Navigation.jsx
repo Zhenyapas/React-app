@@ -13,8 +13,8 @@ function Navigation(props) {
             <div className = {classes.nav_links}>
                 <div  className={classes.item}><NavLink to = '/Profile' activeClassName={classes.active}>Profile</NavLink><span ></span></div>
                 <div className={classes.item}><NavLink to = '/Messages' activeClassName={classes.active}>Messages</NavLink><span className = {classes.span_active}>{props.countMessages}</span></div>
-{/*                 <div className={classes.item}><Navlink to = '/Users' activeClassName={classes.active}>Users</Navlink><span className = {classes.span_active}></span></div>
- */}                <div className={classes.item}><a hreff= '#' >Music</a><span ></span></div>
+               <div className={classes.item}><NavLink to = '/Users' activeClassName={classes.active}>Users</NavLink><span className = {classes.span_active}></span></div>
+              <div className={classes.item}><a hreff= '#' >Music</a><span ></span></div>
             </div>
         </nav>
     );

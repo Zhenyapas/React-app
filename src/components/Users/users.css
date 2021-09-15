@@ -1,0 +1,32 @@
+.ulPages {
+    text-decoration: none;
+    list-style: none;
+    font-size: 20px;
+    display: flex;
+    
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0;
+    min-height: 35px;
+    margin-top: 20px;
+    
+
+}
+.ulPages li {
+    margin-right: 25px;
+    cursor: pointer;
+   
+   
+}
+.ulPages li:hover {
+  color: #317EF6 ;
+  font-weight: 700;
+  font-size: 25px;
+}
+ul .selectedPage {
+    color: #317EF6;
+    font-weight: 700;
+    
+  }
+    
+

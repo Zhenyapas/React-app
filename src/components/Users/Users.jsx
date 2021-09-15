@@ -1,6 +1,7 @@
 import React from 'react';
 import User from './user';
 import * as axios from 'axios'; 
+import './users.css';
 
 
 
@@ -22,15 +23,25 @@ class Users extends React.Component {
 
     }
     
-   
+     setCurrentPage = (pageNumber) => {
+        this.props.setUsersPage(pageNumber);
+    }
     
     
 
     render() {
 
-        this.usersList = this.props.users.map( (obj) => <User  u={obj}
-        followed={obj.followed} changeToFollow={this.props.changeToFollow} 
-       changeToUnfollow={this.props.changeToUnfollow}   />);
+        let usersList = this.props.users.map( (obj) => <User  u={obj}
+         changeToFollow={this.props.changeToFollow} 
+         changeToUnfollow={this.props.changeToUnfollow}   />);
+        
+       
+        let selectedPage = 'selectedPage';
+        let totalPages = [];
+        let pageCount = Math.round(this.props.totalUsersCount / this.props.pageSize) ;
+        for(let i=1;i <= pageCount ; i++) {totalPages.push(i);}
+        let pages = totalPages.map((p) => <li onClick={() => this.setCurrentPage(p) } className={this.props.currentPage === p ?  selectedPage : ''}>{p}</li> );
+
 
      return(
          
@@ -42,9 +53,12 @@ class Users extends React.Component {
 
                         <div>Users</div>
 
+                        
+                        <ul className={`ulPages`}>{pages}</ul>
+
                         <div className='dialogs_wrapper'> 
                         
-                            {this.usersList}
+                            {usersList}
 
                            
                     

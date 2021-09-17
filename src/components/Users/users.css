@@ -9,6 +9,7 @@
     padding-left: 0;
     min-height: 35px;
     margin-top: 20px;
+    margin-left: 5px;
     
 
 }
@@ -21,12 +22,12 @@
 .ulPages li:hover {
   color: #317EF6 ;
   font-weight: 700;
-  font-size: 25px;
+  
 }
 ul .selectedPage {
     color: #317EF6;
     font-weight: 700;
-    
+    font-size: 25px;
   }
     
 

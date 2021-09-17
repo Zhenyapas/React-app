@@ -13,7 +13,7 @@ class Users extends React.Component {
 
     componentDidMount() {
 
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             
            
             this.props.setUsers(response.data.items);
@@ -25,6 +25,12 @@ class Users extends React.Component {
     
      setCurrentPage = (pageNumber) => {
         this.props.setUsersPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+            
+           
+            this.props.setUsers(response.data.items);
+             
+         });
     }
     
     
@@ -53,20 +59,19 @@ class Users extends React.Component {
 
                         <div>Users</div>
 
-                        
-                        <ul className={`ulPages`}>{pages}</ul>
+                         
+
 
                         <div className='dialogs_wrapper'> 
                         
                             {usersList}
 
-                           
-                    
-                        
-                            
-                        
                         </div>
-                    
+
+                        
+                        <ul className={`ulPages`}>{pages}</ul>
+
+
                     
                     </div>
                 </section>

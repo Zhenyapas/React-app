@@ -14,22 +14,28 @@ function Users(props) {
     changeToFollow={props.changeToFollow} 
     changeToUnfollow={props.changeToUnfollow}   />);
    
-  
+    let onCklickPage = (p) => {
+        
+       
+        props.setCurrentPage(p);
+      
+            
+    };
+    
     let selectedPage = 'selectedPage';
     let totalPages = [];
     let pageCount = Math.round(props.totalUsersCount / props.pageSize) ;
     for(let i=1;i <= pageCount ; i++) {totalPages.push(i);}
-    let pages = totalPages.map((p) => <li onClick={() => props.setCurrentPage(p) } className={props.currentPage === p ?  selectedPage : ''}>{p}</li> );
+    let pages = totalPages.map((p) => <li  onClick={() => onCklickPage(p) } className={props.currentPage === p ?  selectedPage : ''}>{p}</li> );
 
     return(
          
-        <section> 
            
             <div className='Dialogs_container'>
                 <section className='Section_Dialogs'>
                     <div className='Content_dialogs'>
 
-                        <div>Users</div>
+                        <div id='userTitle'>Users</div>
 
                          
 
@@ -43,6 +49,8 @@ function Users(props) {
                         
                         <ul className={`ulPages`}>{pages}</ul>
 
+                        
+
 
                     
                     </div>
@@ -52,7 +60,6 @@ function Users(props) {
 
             </div>
 
-        </section>
      )
      
      

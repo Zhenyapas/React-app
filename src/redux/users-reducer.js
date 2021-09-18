@@ -5,6 +5,8 @@ let initialState = {
     pageSize: 10,
     totalUsersCount: 42,
     currentPage: 1,
+    isFetching:false,
+    
 
 }
 const usersReducer = (state = initialState, action) => {
@@ -59,6 +61,12 @@ const usersReducer = (state = initialState, action) => {
     
             }
             return stateCopy;
+         case 'PRELOADER_IS_FETCHING' :
+             stateCopy = {
+                 ...state,
+                isFetching : action.isFetching
+             }
+             return stateCopy;  
 
         default:
              return state;
@@ -70,5 +78,6 @@ export const followActionCreator  = (id) => ({type:'FOLLOW', userId:id});
 export const unfollowActionCreator  = (id) => ({type:'UNFOLLOW', userId:id});
 export const setUsersPageActionCreator = (pageNumber) => ({type:'CLICK_TO_PAGE', pageNumber});
 export const setUsersCreator = (users) => ({type: 'SET_USERS', users});
+export const preloaderActionCreator = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching})
 
 export default usersReducer;

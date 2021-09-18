@@ -1,55 +1,27 @@
 import React from 'react';
 import User from './user';
-import * as axios from 'axios'; 
 import './users.css';
 
 
 
 
 
-class Users extends React.Component {
-
-    
-
-    componentDidMount() {
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
-            
-           
-            this.props.setUsers(response.data.items);
-             
-         });
-         
-
-    }
-    
-     setCurrentPage = (pageNumber) => {
-        this.props.setUsersPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
-            
-           
-            this.props.setUsers(response.data.items);
-             
-         });
-    }
-    
-    
-
-    render() {
-
-        let usersList = this.props.users.map( (obj) => <User  u={obj}
-         changeToFollow={this.props.changeToFollow} 
-         changeToUnfollow={this.props.changeToUnfollow}   />);
-        
-       
-        let selectedPage = 'selectedPage';
-        let totalPages = [];
-        let pageCount = Math.round(this.props.totalUsersCount / this.props.pageSize) ;
-        for(let i=1;i <= pageCount ; i++) {totalPages.push(i);}
-        let pages = totalPages.map((p) => <li onClick={() => this.setCurrentPage(p) } className={this.props.currentPage === p ?  selectedPage : ''}>{p}</li> );
 
 
-     return(
+function Users(props) {
+
+    let usersList = props.users.map( (obj) => <User  u={obj}
+    changeToFollow={props.changeToFollow} 
+    changeToUnfollow={props.changeToUnfollow}   />);
+   
+  
+    let selectedPage = 'selectedPage';
+    let totalPages = [];
+    let pageCount = Math.round(props.totalUsersCount / props.pageSize) ;
+    for(let i=1;i <= pageCount ; i++) {totalPages.push(i);}
+    let pages = totalPages.map((p) => <li onClick={() => props.setCurrentPage(p) } className={props.currentPage === p ?  selectedPage : ''}>{p}</li> );
+
+    return(
          
         <section> 
            
@@ -82,7 +54,10 @@ class Users extends React.Component {
 
         </section>
      )
-    }
+     
+     
+     
+    
 }    
 
 

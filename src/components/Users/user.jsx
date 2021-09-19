@@ -24,8 +24,9 @@ function User (props){
 
  return (   
   <div className={classes.button_section}>
-      
-      <NavLink to={'/Profile/'+ props.u.id} className={`${classes.button_to_click} ${classes.CommentsNavLink}`}>
+
+      <div className={`${classes.button_to_click} ${classes.Comments}`}>
+      <NavLink to={'/Profile/'+ props.u.id} className={`${classes.button_to_click_nav_link} ${classes.CommentsNavLink}`}>
 
           
           <div className={classes.buttons_wrapper}>
@@ -45,6 +46,7 @@ function User (props){
           </div>
 
         
+        </NavLink>
 
           <div className={classes.buttons_wrapper}>
             <div onClick={changeFollowedState}  className={`${classes.button_to_click} ${isFollowedButton}`} >
@@ -52,8 +54,9 @@ function User (props){
             </div>
           </div>
           
+        </div>
          
- </NavLink>
+ 
   </div>  
  );
 

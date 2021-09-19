@@ -31,22 +31,27 @@
     
     
 }
+.button_to_click:hover {
+    box-shadow: none;
+     color:#317EF6;
+    transition: 0.3s;
+    
+    background-color:white ;
+}
+.button_to_click:hover .User_name {
+    box-shadow: none;
+     color:#317EF6;
+    transition: 0.3s;
+    
+    background-color:white ;
+}
+
+
 .button_to_click_nav_link{
    
     border-radius: 7px;
-    cursor: pointer;
-    background-color:white ;
-    
-    
-    
     margin-left: 10px;
-    padding: 10px 10px;
-    
-    
-    
-
-    
-    
+    padding: 5px 5px;    
 }
 
 .button_followed_true{
@@ -126,15 +131,9 @@
     color: rgb(0, 0, 0);
     
   }
-.CommentsNavLink:hover  {
-    box-shadow: none;
-   
-    
-    background-color:white ;
 
-}
 .CommentsNavLink:hover .User_name  {
-    box-shadow: none;
+   
     color:#317EF6;
     transition: 0.3s;
     

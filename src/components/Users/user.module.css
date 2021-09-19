@@ -31,6 +31,7 @@
     
     
 }
+
 .button_followed_true{
     font-size: 13px;
     
@@ -88,12 +89,31 @@
     
 }
 
-.Comments {
-  flex-grow: 1;
-  margin-left: 0;
-  display:flex;
-  justify-content: flex-end;
-  
+
+.CommentsNavLink {
+    flex-grow: 1;
+    margin-left: 0;
+    display:flex;
+    justify-content: flex-end;
+    font-weight: 400;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    
+  }
+.CommentsNavLink:hover  {
+    box-shadow: none;
+   
+    
+    background-color:white ;
+
+}
+.CommentsNavLink:hover .User_name  {
+    box-shadow: none;
+    color:#317EF6;
+    transition: 0.3s;
+    
+    background-color:white ;
+
 }
 .textarea_coments{
 
@@ -127,8 +147,8 @@ align-items: center;
     text-decoration: none;
     color: rgb(0, 0, 0);
 }
-
-.User_name:hover {
+.User_name:hover
+ {
     color:#317EF6;
     transition: 0.3s;
 }

@@ -25,7 +25,7 @@ function User (props){
  return (   
   <div className={classes.button_section}>
       
-      <div className={`${classes.button_to_click} ${classes.Comments}`} >
+      <NavLink to={'/Profile/'+ props.u.id} className={`${classes.button_to_click} ${classes.CommentsNavLink}`}>
 
           
           <div className={classes.buttons_wrapper}>
@@ -53,8 +53,7 @@ function User (props){
           </div>
           
          
-
-      </div>
+ </NavLink>
   </div>  
  );
 

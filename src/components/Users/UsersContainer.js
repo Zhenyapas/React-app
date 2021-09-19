@@ -1,10 +1,71 @@
+import React from 'react';
+import * as axios from 'axios'; 
+import Users from './Users';
+import loader from '../../assets/images/loader.svg';
 import { connect } from 'react-redux';
-import { setUsersPageActionCreator, followActionCreator, setUsersCreator, unfollowActionCreator, preloaderActionCreator } from '../../redux/users-reducer';
-import UsersAPIComponent from './UsersAPIComponent';
+import { changeToFollow,changeToUnfollow,setUsers,setUsersPage,preloaderIsFetching } from '../../redux/users-reducer';
 
 
 
 
+
+
+
+class UsersContainer extends React.Component {
+
+    
+
+    componentDidMount() {
+
+        this.props.preloaderIsFetching(true);
+
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+            
+            this.props.preloaderIsFetching(false);
+            this.props.setUsers(response.data.items);
+             
+         });
+        
+        
+
+    }
+    
+     setCurrentPage = (pageNumber) => {
+        this.props.setUsersPage(pageNumber);
+        this.props.preloaderIsFetching(true);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+            
+            this.props.preloaderIsFetching(false);
+            this.props.setUsers(response.data.items);
+             
+         });
+    }
+    
+      
+    
+
+    render() {
+
+       
+     return( <>
+        
+        {this.props.isFetching ? <img className='loader' src={loader}></img> : null}
+
+        <section> 
+        <Users users={this.props.users}
+            changeToFollow={this.props.changeToFollow} 
+            changeToUnfollow={this.props.changeToUnfollow}
+            totalUsersCount={this.props.totalUsersCount }
+            pageSize= {this.props.pageSize}
+            currentPage={this.props.currentPage}
+            setCurrentPage={this.setCurrentPage}
+             />
+        </section>     
+       </>
+
+     )
+    }
+}
 
 let mapStateToProps = (state) => {
     return {
@@ -15,40 +76,13 @@ let mapStateToProps = (state) => {
         currentPage:state.usersPage.currentPage,
         isFetching:state.usersPage.isFetching,
        
-       
-
-
-
-    }
-};
-let mapDispatchToProps = (dispatch) => {
-    return {
-    
-        changeToFollow: (id) => {
-
-           dispatch(followActionCreator(id));
-
-        },
-        changeToUnfollow: (id) => {
-
-            dispatch(unfollowActionCreator(id));
- 
-         },
-        setUsers : (users)  => {
-
-            dispatch(setUsersCreator(users));
-        },
-        setUsersPage : (PageNumber) => {
-
-            dispatch(setUsersPageActionCreator(PageNumber));
-        },
-        preloaderIsFetching : (isFetching) => {
-            dispatch(preloaderActionCreator(isFetching));
-        }
-
     }
 };
 
-const UsersContainer = connect(mapStateToProps,mapDispatchToProps)(UsersAPIComponent);
+export default connect(mapStateToProps,{ changeToFollow,changeToUnfollow,setUsers,setUsersPage,preloaderIsFetching })(UsersContainer);
 
-export default UsersContainer;
+
+
+
+
+

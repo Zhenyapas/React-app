@@ -74,10 +74,11 @@ const usersReducer = (state = initialState, action) => {
 
 }
 
-export const followActionCreator  = (id) => ({type:'FOLLOW', userId:id});
-export const unfollowActionCreator  = (id) => ({type:'UNFOLLOW', userId:id});
-export const setUsersPageActionCreator = (pageNumber) => ({type:'CLICK_TO_PAGE', pageNumber});
-export const setUsersCreator = (users) => ({type: 'SET_USERS', users});
-export const preloaderActionCreator = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching})
+export const changeToFollow  = (id) => ({type:'FOLLOW', userId:id});
+export const changeToUnfollow  = (id) => ({type:'UNFOLLOW', userId:id});
+export const setUsersPage = (pageNumber) => ({type:'CLICK_TO_PAGE', pageNumber});
+export const setUsers = (users) => ({type: 'SET_USERS', users});
+export const preloaderIsFetching = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching})
 
 export default usersReducer;
+

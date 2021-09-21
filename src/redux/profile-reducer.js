@@ -1,25 +1,26 @@
 let initialState = {
-       
-        myName : {
-               'name' : 'Zhenya Pas',
-               'countMessages' : '12'
-           },       
+
         postInfo : [
-               {'likes': '8',
-               'post' : 'It is not simple as I gess!'
-               },
-               {'likes': '1',
-               'post' : 'Just work!'
-               },
-               {'likes': '3',
-               'post' : 'I\'ve done it!'
-               },
-               {'likes': '8',
-               'post' : 'You got it!'
-               }
+          {'likes': '8',
+          'post' : 'It is not simple as I gess!'
+          },
+          {'likes': '1',
+          'post' : 'Just work!'
+          },
+          {'likes': '3',
+          'post' : 'I\'ve done it!'
+          },
+          {'likes': '8',
+          'post' : 'You got it!'
+          }
+
            ],
      
         textareaPosts: '',
+
+        profile:[],
+
+        isMainUser: true,
        
 }
 const profileReducer = (state = initialState, action) => {
@@ -40,10 +41,21 @@ const profileReducer = (state = initialState, action) => {
          return stateCopy;
       case 'UPDATE-NEW-POST-TEXT':
         stateCopy = {
-          ...state
+          ...state,
+          textareaPosts: action.text
         }
-          stateCopy.textareaPosts = action.newText;
           return stateCopy;
+      case 'SET_PROFILE_USER':
+        stateCopy = {
+            ...state, profile:action.profile,
+        }
+        return stateCopy;
+      case 'IS_MAIN_USER' :
+         stateCopy = {
+             ...state,
+            isMainUser : action.isItMain
+          }
+          return stateCopy;                
        default:
           return state;   
     } 
@@ -51,3 +63,10 @@ const profileReducer = (state = initialState, action) => {
 
 }
 export default profileReducer ;
+
+
+
+export const updateNewPostText = (text) => ({type:'UPDATE-NEW-POST-TEXT',text});
+export const addPost = () => ({type:'ADD-POST'});
+export const setUserProfile = (profile) => ({type:'SET_PROFILE_USER',profile});
+export const isMainUserAC = (isItMain) =>({type:'IS_MAIN_USER',isItMain});

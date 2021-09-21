@@ -52,13 +52,7 @@ class UsersContainer extends React.Component {
         {this.props.isFetching ? <img className='loader' src={loader}></img> : null}
 
         <section> 
-        <Users users={this.props.users}
-            changeToFollow={this.props.changeToFollow} 
-            changeToUnfollow={this.props.changeToUnfollow}
-            totalUsersCount={this.props.totalUsersCount }
-            pageSize= {this.props.pageSize}
-            currentPage={this.props.currentPage}
-            setCurrentPage={this.setCurrentPage}
+        <Users {...this.props} setCurrentPage={this.setCurrentPage}
              />
         </section>     
        </>

@@ -67,7 +67,7 @@ const usersReducer = (state = initialState, action) => {
                 isFetching : action.isFetching
              }
              return stateCopy;  
-
+             
         default:
              return state;
     }

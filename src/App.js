@@ -20,7 +20,7 @@ function App() {
       <NavigationContainer  />
 
         <div className="wrapper">
-          <div class='nav-section'>lll</div>
+          <div class='nav-section'></div>
           <Route path='/Profile/:userId?' render={ () => <ProfileContainer  />} />
           <Route path='/Messages'render={ () => <MessagesContainer  />} />
           <Route path='/Users' render={ () => <UsersContainer  />} />

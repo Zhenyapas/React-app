@@ -10,8 +10,8 @@ function User (props){
     
         let status = (props.u.status) ?  props.u.status : 'Not selected';
    
-        let isFollowed = (props.u.followed) ?  'Follow' : 'Unfollow';
-        let isFollowedButton = (props.u.followed) ?  classes.button_followed_true:classes.button_followed_false;
+        let isFollowed = (props.u.followed) ?  'Unfollow' : 'Follow';
+        let isFollowedButton = (props.u.followed) ?  classes.button_followed_false:classes.button_followed_true;
 
             let changeFollowedState = () => {
 
@@ -31,7 +31,7 @@ function User (props){
           
           <div className={classes.buttons_wrapper}>
             <div className={`${classes.button_to_click} ${classes.User_avatar}`} >
-                <img  src={props.u.photos.small !=null ? props.u.img : userPhoto} />
+                <img  src={props.u.photos.small !=null ? props.u.photos.small : userPhoto} />
                 
             </div>
           </div>

@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './user.module.css';
 import userPhoto from '../../assets/images/userFace.gif';
+import * as axios from 'axios'; 
+import { usersAPI } from '../../api/api';
 
 
 
@@ -15,7 +17,33 @@ function User (props){
 
             let changeFollowedState = () => {
 
-                (props.u.followed) ? props.changeToUnfollow(props.u.id) : props.changeToFollow(props.u.id);
+                if(props.u.followed) { 
+                  
+                 
+                 usersAPI.unfollowUser(props.u.id)
+                  .then(data => {
+                     
+                      if (data.resultCode === 0) {
+                        props.changeToUnfollow(props.u.id)
+                      }
+                     });}
+                 
+          
+                else {
+
+                  usersAPI.followUser(props.u.id)
+                  .then(data => {
+                    
+                    
+                     
+                      if (data.resultCode === 0) {
+                        props.changeToFollow(props.u.id)
+                      }
+                     });
+                    /*  props.changeToFollow(props.u.id) */
+                }       
+                
+                
 
             }
        let nav= React.createRef();

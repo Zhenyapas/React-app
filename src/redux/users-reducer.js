@@ -3,7 +3,7 @@ let img1='https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progre
 let initialState = {
     users: [],
     pageSize: 10,
-    totalUsersCount: 42,
+    totalUsersCount: null,
     currentPage: 1,
     isFetching:false,
     
@@ -67,6 +67,13 @@ const usersReducer = (state = initialState, action) => {
                 isFetching : action.isFetching
              }
              return stateCopy;  
+         case 'SET_TOTAL_USERS_COUNT' :
+           
+             stateCopy = {
+                 ...state,
+                 totalUsersCount: (action.totalCount < 50) ? action.totalCount : 42
+                }
+                return stateCopy;      
              
         default:
              return state;
@@ -78,7 +85,8 @@ export const changeToFollow  = (id) => ({type:'FOLLOW', userId:id});
 export const changeToUnfollow  = (id) => ({type:'UNFOLLOW', userId:id});
 export const setUsersPage = (pageNumber) => ({type:'CLICK_TO_PAGE', pageNumber});
 export const setUsers = (users) => ({type: 'SET_USERS', users});
-export const preloaderIsFetching = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching})
+export const setTotalUsersCount = (totalCount) => ({type:'SET_TOTAL_USERS_COUNT', totalCount});
+export const preloaderIsFetching = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching});
 
 export default usersReducer;
 

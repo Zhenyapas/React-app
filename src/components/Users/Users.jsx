@@ -21,13 +21,15 @@ function Users(props) {
       
             
     };
-    
+
+
     let selectedPage = 'selectedPage';
     let totalPages = [];
     let pageCount = Math.round(props.totalUsersCount / props.pageSize) ;
     for(let i=1;i <= pageCount ; i++) {totalPages.push(i);}
     let pages = totalPages.map((p) => <li  onClick={() => onCklickPage(p) } className={props.currentPage === p ?  selectedPage : ''}>{p}</li> );
-
+    let next = <li>+</li>;
+    let lust =  <li>-</li>;
     return(
          
            
@@ -47,7 +49,11 @@ function Users(props) {
                         </div>
 
                         
-                        <ul className={`ulPages`}>{pages}</ul>
+                        <ul className={`ulPages`}>
+                            {lust}
+                            {pages}
+                            {next}
+                        </ul>
 
                         
 

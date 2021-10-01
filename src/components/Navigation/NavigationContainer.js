@@ -34,7 +34,8 @@ class NavigationContainer extends React.Component {
 let mapStateToProps = (state) => {
     return{
        name: state.auth.login,
-       countMessages:state.navBar.myName.countMessages
+       countMessages:state.navBar.myName.countMessages,
+       isAuth:state.auth.isAuth
     };
 };
 

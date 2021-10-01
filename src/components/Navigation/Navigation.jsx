@@ -9,7 +9,8 @@ function Navigation(props) {
     return(
         <nav>
             <div className = {classes.nav_avatar}></div>
-            <div className = {classes.nav_profile_name}>{props.name}</div>
+           { (props.isAuth == true ) ?  <div className = {classes.nav_profile_name}>{props.name}</div> :
+           <div className = {classes.nav_profile_name}><NavLink to = '/Profile' activeClassName={classes.active}>Sign in</NavLink></div> }
             <div className = {classes.nav_links}>
                 <div  className={classes.item}><NavLink to = '/Profile' activeClassName={classes.active}>Profile</NavLink><span ></span></div>
                 <div className={classes.item}><NavLink to = '/Messages' activeClassName={classes.active}>Messages</NavLink><span className = {classes.span_active}>{props.countMessages}</span></div>

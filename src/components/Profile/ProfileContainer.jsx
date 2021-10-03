@@ -47,7 +47,7 @@ let mapStateToProps = (state) => {
   postInfo: state.profilePage.postInfo,
   profile: state.profilePage.profile,
   isMainUser: state.profilePage.isMainUser,
-  meUserId:state.auth.id
+  meUserId:state.auth.id,
 
   }
 };

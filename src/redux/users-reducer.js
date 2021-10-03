@@ -7,6 +7,7 @@ let initialState = {
     currentPage: 1,
     isFetching:false,
     
+    
 
 }
 const usersReducer = (state = initialState, action) => {
@@ -73,7 +74,14 @@ const usersReducer = (state = initialState, action) => {
                  ...state,
                  totalUsersCount: (action.totalCount < 50) ? action.totalCount : 42
                 }
-                return stateCopy;      
+                return stateCopy;   
+        case 'IS_BUTTON_DISABLED' :
+           
+             stateCopy = {
+                 ...state,
+                 isDisabled: action.isFetch 
+                }
+                return stateCopy;           
              
         default:
              return state;
@@ -87,6 +95,7 @@ export const setUsersPage = (pageNumber) => ({type:'CLICK_TO_PAGE', pageNumber})
 export const setUsers = (users) => ({type: 'SET_USERS', users});
 export const setTotalUsersCount = (totalCount) => ({type:'SET_TOTAL_USERS_COUNT', totalCount});
 export const preloaderIsFetching = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching});
+export const isButtonDisabled = (isFetch) => ({type:'IS_BUTTON_DISABLED', isFetch});
 
 export default usersReducer;
 

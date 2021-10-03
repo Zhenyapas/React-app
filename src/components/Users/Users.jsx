@@ -12,7 +12,7 @@ function Users(props) {
 
     let usersList = props.users.map( (obj) => <User  u={obj}
     changeToFollow={props.changeToFollow} 
-    changeToUnfollow={props.changeToUnfollow}   />);
+    changeToUnfollow={props.changeToUnfollow} isDisabled={props.isDisabled} isButtonDisabled={props.isButtonDisabled}   />);
    
     let onCklickPage = (p) => {
         

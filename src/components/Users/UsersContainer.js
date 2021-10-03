@@ -3,7 +3,7 @@ import * as axios from 'axios';
 import Users from './Users';
 import loader from '../../assets/images/loader.svg';
 import { connect } from 'react-redux';
-import { changeToFollow,changeToUnfollow,setUsers,setUsersPage,preloaderIsFetching,setTotalUsersCount } from '../../redux/users-reducer';
+import { changeToFollow,changeToUnfollow,setUsers,setUsersPage,preloaderIsFetching,setTotalUsersCount,isButtonDisabled} from '../../redux/users-reducer';
 import { usersAPI } from '../../api/api';
 
 
@@ -73,11 +73,12 @@ let mapStateToProps = (state) => {
         pageSize:state.usersPage.pageSize,
         currentPage:state.usersPage.currentPage,
         isFetching:state.usersPage.isFetching,
+        isDisabled:state.usersPage.isDisabled,
        
     }
 };
 
-export default connect(mapStateToProps,{ changeToFollow,changeToUnfollow,setUsers,setUsersPage,setTotalUsersCount,preloaderIsFetching,})(UsersContainer);
+export default connect(mapStateToProps,{ changeToFollow,changeToUnfollow,setUsers,setUsersPage,setTotalUsersCount,preloaderIsFetching,isButtonDisabled})(UsersContainer);
 
 
 

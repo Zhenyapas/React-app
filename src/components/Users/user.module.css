@@ -31,6 +31,16 @@
     
     
 }
+button{
+    box-shadow: 0px 9.05305px 18.1061px #EDEDF5;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color:white ;
+    border-style: none;  
+    margin-left: 10px;
+    padding: 10px 10px;
+
+}
 .button_to_click:hover {
     box-shadow: none;
      color:#317EF6;
@@ -58,12 +68,22 @@
     font-size: 13px;
     
     margin-left: 0px;
-    width: 50px;
-    height: 20px;
+    width: 65px;
+    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+
+    box-shadow: 0px 9.05305px 18.1061px #EDEDF5;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color:white ;
+    
+    
+    
+    margin-left: 10px;
+    padding: 10px 10px;
     
 
 }
@@ -71,12 +91,22 @@
     font-size: 13px;
     
     margin-left: 0px;
-    width: 50px;
-    height: 20px;
+    width: 65px;
+    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+
+    box-shadow: 0px 9.05305px 18.1061px #EDEDF5;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color:white ;
+    
+    
+    
+    margin-left: 10px;
+    padding: 10px 10px;
     
 
 }
@@ -90,6 +120,29 @@
     background-color:rgba(226, 21, 106, 0.63) ;
     transition: 0.7s;
     color: white;
+}
+.button_disabled {
+
+    font-size: 13px;
+    margin-left: 0px;
+    width: 65px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0px ;
+    
+
+    
+    border-radius: 7px;
+    
+    background-color:rgb(243, 243, 243) ;
+    color: white;
+    
+    
+    margin-left: 10px;
+    padding: 10px 10px;
 }
 
 

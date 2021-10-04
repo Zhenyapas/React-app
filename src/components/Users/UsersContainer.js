@@ -3,7 +3,7 @@ import * as axios from 'axios';
 import Users from './Users';
 import loader from '../../assets/images/loader.svg';
 import { connect } from 'react-redux';
-import { changeToFollow,changeToUnfollow,setUsers,setUsersPage,preloaderIsFetching,setTotalUsersCount,isButtonDisabled} from '../../redux/users-reducer';
+import { changeToFollow,changeToUnfollow,setUsers,setUsersPage,preloaderIsFetching,setTotalUsersCount,isButtonDisabled,getUsers} from '../../redux/users-reducer';
 import { usersAPI } from '../../api/api';
 
 
@@ -18,7 +18,9 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
 
-        this.props.preloaderIsFetching(true);
+        this.props.getUsers()
+
+/*         this.props.preloaderIsFetching(true);
         usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
         .then(data => {
             
@@ -26,7 +28,7 @@ class UsersContainer extends React.Component {
             this.props.setUsers(data.items);
             this.props.setTotalUsersCount(data.totalCount);
              
-         });
+         }); */
         
         
 
@@ -78,7 +80,7 @@ let mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps,{ changeToFollow,changeToUnfollow,setUsers,setUsersPage,setTotalUsersCount,preloaderIsFetching,isButtonDisabled})(UsersContainer);
+export default connect(mapStateToProps,{ changeToFollow,changeToUnfollow,setUsers,setUsersPage,setTotalUsersCount,preloaderIsFetching,isButtonDisabled,getUsers})(UsersContainer);
 
 
 

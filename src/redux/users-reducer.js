@@ -1,5 +1,4 @@
-let img1='https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY3MDUxMjkzMjI1OTIwMTcz/brad-pitt-attends-the-premiere-of-20th-century-foxs--square.jpg';
-           
+import {usersAPI} from '../api/api'          
 let initialState = {
     users: [],
     pageSize: 10,
@@ -97,5 +96,20 @@ export const setTotalUsersCount = (totalCount) => ({type:'SET_TOTAL_USERS_COUNT'
 export const preloaderIsFetching = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching});
 export const isButtonDisabled = (isFetch) => ({type:'IS_BUTTON_DISABLED', isFetch});
 
-export default usersReducer;
+export const getUsers = (currentPage,pageSize) => {
+    
+  return (dispatch) => {
 
+            dispatch(preloaderIsFetching(true));
+            usersAPI.getUsers(currentPage,pageSize)
+            .then(data => {
+                
+                dispatch(preloaderIsFetching(false));
+                dispatch(setUsers(data.items));
+                dispatch(setTotalUsersCount(data.totalCount));
+            });
+
+    }   
+}
+
+export default usersReducer;

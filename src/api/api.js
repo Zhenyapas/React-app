@@ -18,6 +18,15 @@ const folowAndUnfollow = axios.create({
     }
 
 });
+const logIn = axios.create({
+
+    withCredentials:true,
+    headers: {
+        'API-KEY':'e5f5c064-7205-4d67-9ab2-9013a651f465'
+    }
+
+});
+
 
 
 export const usersAPI = {
@@ -43,8 +52,26 @@ export const usersAPI = {
             return response.data;
         })
         
+    },
+    getUserProfile(userId){
+
+        return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId)
+        .then((response) => {
+            
+            return response;
+             
+         });
+    },
+    authLogIn() {
+
+        return logIn.get(`https://social-network.samuraijs.com/api/1.0/auth/me`)
+        .then((response) => {
+            
+            return response;
+             
+         });
+
     }
-  
 }
 
 

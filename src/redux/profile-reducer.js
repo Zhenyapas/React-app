@@ -1,3 +1,5 @@
+import {usersAPI} from '../api/api'; 
+
 let initialState = {
 
         postInfo : [
@@ -70,3 +72,18 @@ export const updateNewPostText = (text) => ({type:'UPDATE-NEW-POST-TEXT',text});
 export const addPost = () => ({type:'ADD-POST'});
 export const setUserProfile = (profile) => ({type:'SET_PROFILE_USER',profile});
 export const isMainUserAC = (isItMain) =>({type:'IS_MAIN_USER',isItMain});
+
+export const getUserProfile = (id) => {
+    
+  return (dispatch) => {
+
+            usersAPI.getUserProfile(id)
+            .then(response => {
+                
+                
+                dispatch(setUserProfile(response.data));
+                
+            });
+
+    }   
+}

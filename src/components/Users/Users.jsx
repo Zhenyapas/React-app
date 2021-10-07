@@ -11,8 +11,7 @@ import './users.css';
 function Users(props) {
 
     let usersList = props.users.map( (obj) => <User  u={obj}
-    changeToFollow={props.changeToFollow} 
-    changeToUnfollow={props.changeToUnfollow} isDisabled={props.isDisabled} isButtonDisabled={props.isButtonDisabled}   />);
+    unfollow={props.unfollow} follow={props.follow}   />);
    
     let onCklickPage = (p) => {
         

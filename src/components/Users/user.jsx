@@ -2,8 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './user.module.css';
 import userPhoto from '../../assets/images/userFace.gif';
-import { usersAPI } from '../../api/api';
-
 
 
 
@@ -24,42 +22,12 @@ function User (props){
               
                 if(props.u.followed) { 
                   
-               
-               
-                
+                  props.unfollow(e,props.u.id);
 
-                 usersAPI.unfollowUser(props.u.id)
-                  .then(data => {
-                     
-                      if (data.resultCode === 0) {
-                        props.changeToUnfollow(props.u.id);
-                        
-                      }
-                      e.target.disabled=false;
-                     });
-
-                 
-              
-                
-                
                 } else {
                
-             
-
-                  usersAPI.followUser(props.u.id)
-                  .then(data => {
-                    
-                    
-                     
-                      if (data.resultCode === 0) {
-                        props.changeToFollow(props.u.id);
-                        
-                      }
-                      e.target.disabled=false;
-                     });
-                     
+                  props.follow(e,props.u.id);
               
-               
                 }       
                 
                 

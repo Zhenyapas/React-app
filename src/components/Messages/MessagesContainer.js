@@ -9,7 +9,8 @@ let mapStateToProps = (state) => {
 
         infoData : state.dialogsPage.infoData,
         messageData4: state.dialogsPage.messageData4,
-        textareaDialog:state.dialogsPage.textareaDialog
+        textareaDialog:state.dialogsPage.textareaDialog,
+        isAuth:state.auth.isAuth
 
     }
 };

@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { isMainUserAC, setUserProfile } from '../../redux/profile-reducer';
+import { isMainUserAC,getUserProfile} from '../../redux/profile-reducer';
 import { setAuthUserData} from '../../redux/auth-reducer';
 import Profile from './Profile.jsx';
-import * as axios from 'axios'; 
 import { withRouter } from 'react-router-dom';
+
 
 
  class ProfileContainer extends  React.Component{
@@ -27,17 +27,15 @@ import { withRouter } from 'react-router-dom';
     } else {
       this.props.isMainUserAC(false);
     }
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId).then(response => {
-            
-      this.props.setUserProfile(response.data);
-       
-   });
+    
+    this.props.getUserProfile(userId);
+
    }
 
 
   
   render(){
-    return <Profile {...this.props}  />
+    return <Profile {...this.props} />
   }
 
  }
@@ -52,5 +50,5 @@ let mapStateToProps = (state) => {
   }
 };
 let withUrlDataContainerComponentwithRouter = withRouter(ProfileContainer);
-export default connect(mapStateToProps, {setUserProfile,isMainUserAC, setAuthUserData})(withUrlDataContainerComponentwithRouter);
+export default connect(mapStateToProps, {isMainUserAC,setAuthUserData,getUserProfile})(withUrlDataContainerComponentwithRouter);
  

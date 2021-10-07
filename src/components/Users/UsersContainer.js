@@ -1,10 +1,10 @@
 import React from 'react';
-import * as axios from 'axios'; 
 import Users from './Users';
 import loader from '../../assets/images/loader.svg';
 import { connect } from 'react-redux';
-import { changeToFollow,changeToUnfollow,setUsers,setUsersPage,preloaderIsFetching,setTotalUsersCount,isButtonDisabled,getUsers} from '../../redux/users-reducer';
-import { usersAPI } from '../../api/api';
+import {unfollow,follow,getUsers} from '../../redux/users-reducer';
+import { Redirect } from 'react-router-dom';
+
 
 
 
@@ -18,33 +18,14 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
 
-        this.props.getUsers()
-
-/*         this.props.preloaderIsFetching(true);
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-        .then(data => {
-            
-            this.props.preloaderIsFetching(false);
-            this.props.setUsers(data.items);
-            this.props.setTotalUsersCount(data.totalCount);
-             
-         }); */
-        
-        
+        this.props.getUsers(this.props.currentPage,this.props.pageSize);
 
     }
     
      setCurrentPage = (pageNumber) => {
-        this.props.setUsersPage(pageNumber);
-        this.props.preloaderIsFetching(true);
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-        .then(data => {
-            
-            this.props.preloaderIsFetching(false);
-            this.props.setUsers(data.items);
-           
-             
-         });
+
+        this.props.getUsers(pageNumber,this.props.pageSize);
+
     }
     
       
@@ -52,7 +33,7 @@ class UsersContainer extends React.Component {
 
     render() {
 
-       
+     if(!this.isAuth) return  <Redirect to='/login' />
      return( <>
         
         {this.props.isFetching ? <img className='loader' src={loader}></img> : null}
@@ -76,11 +57,12 @@ let mapStateToProps = (state) => {
         currentPage:state.usersPage.currentPage,
         isFetching:state.usersPage.isFetching,
         isDisabled:state.usersPage.isDisabled,
+        isAuth:state.auth.isAuth
        
     }
 };
 
-export default connect(mapStateToProps,{ changeToFollow,changeToUnfollow,setUsers,setUsersPage,setTotalUsersCount,preloaderIsFetching,isButtonDisabled,getUsers})(UsersContainer);
+export default connect(mapStateToProps,{ getUsers,unfollow,follow})(UsersContainer);
 
 
 

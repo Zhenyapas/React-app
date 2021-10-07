@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
+import Login from './components/LogInPage/logInPage';
 import MessagesContainer from './components/Messages/MessagesContainer';
 import NavigationContainer from './components/Navigation/NavigationContainer';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/Profile/:userId?' render={ () => <ProfileContainer  />} />
           <Route path='/Messages' render={ () => <MessagesContainer  />} />
           <Route path='/Users' render={ () => <UsersContainer  />} />
+          <Route path='/login' render={ () => <Login />} />
         </div>
 
     </div>

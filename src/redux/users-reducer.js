@@ -1,4 +1,4 @@
-import {usersAPI} from '../api/api'          
+import {usersAPI} from '../api/api';          
 let initialState = {
     users: [],
     pageSize: 10,
@@ -111,5 +111,36 @@ export const getUsers = (currentPage,pageSize) => {
 
     }   
 }
-
+export const unfollow = (e, id) => {
+    
+    return (dispatch) => {
+  
+        usersAPI.unfollowUser(id)
+        .then(data => {
+           
+            if (data.resultCode === 0) {
+             dispatch(changeToUnfollow(id));
+              
+            }
+            e.target.disabled=false;
+           });
+  
+      }   
+  }
+  export const follow = (e, id) => {
+    
+    return (dispatch) => {
+  
+        usersAPI.followUser(id)
+        .then(data => {
+           
+            if (data.resultCode === 0) {
+             dispatch(changeToFollow(id));
+              
+            }
+            e.target.disabled=false;
+           });
+  
+      }   
+  } ; 
 export default usersReducer;

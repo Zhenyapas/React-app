@@ -1,3 +1,8 @@
+import { usersAPI } from "../api/api";
+
+
+
+
            
 let initialState = {
     id:2,
@@ -36,7 +41,26 @@ const usersReducer = (state = initialState, action) => {
 }
 
 export const setAuthUserData = (id, email, login)  => ({type: 'SET_USER_DATA', data:{id, email, login}});
-export const preloaderIsFetching = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching})
+export const preloaderIsFetching = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching});
+
+export const authLogIn = () => {
+
+    return (dispatch) => {
+
+        usersAPI.authLogIn()
+        .then((response) => {
+
+            if (response.data.resultCode === 0) {
+                dispatch(setAuthUserData(response.data.data.id,
+                   response.data.data.email,
+                   response.data.data.login));
+            }
+
+        });
+
+    }
+}
+authLogIn();
 
 export default usersReducer;
 

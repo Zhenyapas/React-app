@@ -4,6 +4,7 @@ import { isMainUserAC,getUserProfile} from '../../redux/profile-reducer';
 import { setAuthUserData} from '../../redux/auth-reducer';
 import Profile from './Profile.jsx';
 import { withRouter } from 'react-router-dom';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 
 
@@ -39,6 +40,8 @@ import { withRouter } from 'react-router-dom';
   }
 
  }
+
+let AuthRedirectComponent =  withAuthRedirect(ProfileContainer);
   
 let mapStateToProps = (state) => {
   return {
@@ -46,9 +49,10 @@ let mapStateToProps = (state) => {
   profile: state.profilePage.profile,
   isMainUser: state.profilePage.isMainUser,
   meUserId:state.auth.id,
+ 
 
   }
 };
-let withUrlDataContainerComponentwithRouter = withRouter(ProfileContainer);
+let withUrlDataContainerComponentwithRouter = withRouter(AuthRedirectComponent);
 export default connect(mapStateToProps, {isMainUserAC,setAuthUserData,getUserProfile})(withUrlDataContainerComponentwithRouter);
  

@@ -3,7 +3,7 @@ import Users from './Users';
 import loader from '../../assets/images/loader.svg';
 import { connect } from 'react-redux';
 import {unfollow,follow,getUsers} from '../../redux/users-reducer';
-import { Redirect } from 'react-router-dom';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 
 
@@ -33,7 +33,8 @@ class UsersContainer extends React.Component {
 
     render() {
 
-     if(!this.isAuth) return  <Redirect to='/login' />
+    
+     
      return( <>
         
         {this.props.isFetching ? <img className='loader' src={loader}></img> : null}
@@ -48,6 +49,8 @@ class UsersContainer extends React.Component {
     }
 }
 
+let AuthRedirectComponent = withAuthRedirect(UsersContainer);
+
 let mapStateToProps = (state) => {
     return {
 
@@ -57,12 +60,12 @@ let mapStateToProps = (state) => {
         currentPage:state.usersPage.currentPage,
         isFetching:state.usersPage.isFetching,
         isDisabled:state.usersPage.isDisabled,
-        isAuth:state.auth.isAuth
+       
        
     }
 };
 
-export default connect(mapStateToProps,{ getUsers,unfollow,follow})(UsersContainer);
+export default connect(mapStateToProps,{ getUsers,unfollow,follow})(AuthRedirectComponent);
 
 
 

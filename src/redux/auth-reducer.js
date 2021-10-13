@@ -8,7 +8,7 @@ let initialState = {
     id:2,
     email:null,
     login:null,
-    isAuth:false,
+    isAuth:null,
     
 }
 const usersReducer = (state = initialState, action) => {
@@ -60,7 +60,7 @@ export const authLogIn = () => {
 
     }
 }
-authLogIn();
+
 
 export default usersReducer;
 

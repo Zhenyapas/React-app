@@ -143,4 +143,5 @@ export const unfollow = (e, id) => {
   
       }   
   } ; 
-export default usersReducer;
+
+  export default usersReducer;

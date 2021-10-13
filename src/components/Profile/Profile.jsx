@@ -4,6 +4,7 @@ import PostsContainer from './Posts/PostsContainer.js';
 import loader from '../../assets/images/loader.svg';
 import './Profile.css';
 
+
   
   
 function Profile(props) {
@@ -13,7 +14,7 @@ function Profile(props) {
     if(!props.profile.photos) {
       return <img className='loader' src={loader}></img>
     }
-  
+   
     return(
 
     <section>

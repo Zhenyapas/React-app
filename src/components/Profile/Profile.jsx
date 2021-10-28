@@ -3,6 +3,7 @@ import MyPost from './Posts/MyPost.jsx';
 import PostsContainer from './Posts/PostsContainer.js';
 import loader from '../../assets/images/loader.svg';
 import './Profile.css';
+import Status from './Status/Status.jsx';
 
 
   
@@ -19,7 +20,9 @@ function Profile(props) {
 
     <section>
        
-        <div className='Content profileAvatar '><img src={props.profile.photos.large}></img></div>
+        <div className='Content profileAvatar '><img src={props.profile.photos.large}></img> </div>
+        <Status status="Hello my friends" {...props}/>
+        
         <div className='Content'>Hello, {props.profile.fullName}. Whats new?</div>
         <div className='Content'>{props.profile.contacts.instagram}</div>
 

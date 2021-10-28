@@ -106,6 +106,7 @@ export const getUsers = (currentPage,pageSize) => {
                 
                 dispatch(preloaderIsFetching(false));
                 dispatch(setUsers(data.items));
+                dispatch(setUsersPage(currentPage)); 
                 dispatch(setTotalUsersCount(data.totalCount));
             });
 

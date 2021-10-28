@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Navigation from './Navigation';
 import { authLogIn } from '../../redux/auth-reducer';
+import { compose } from 'redux';
 
 
 
@@ -29,5 +30,7 @@ let mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps,{authLogIn})(NavigationContainer);
+
+
 
 

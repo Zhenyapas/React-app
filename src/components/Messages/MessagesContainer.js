@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import Messages from './Messages';
 import './Messages.css';
 
@@ -28,6 +30,6 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 };
-const MessagesContainer = connect(mapStateToProps,mapDispatchToProps)(Messages);
 
-export default MessagesContainer;
+
+export default compose(connect(mapStateToProps,mapDispatchToProps),withAuthRedirect)(Messages);

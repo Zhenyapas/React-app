@@ -4,6 +4,7 @@ import loader from '../../assets/images/loader.svg';
 import { connect } from 'react-redux';
 import {unfollow,follow,getUsers} from '../../redux/users-reducer';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 
 
@@ -49,7 +50,7 @@ class UsersContainer extends React.Component {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(UsersContainer);
+
 
 let mapStateToProps = (state) => {
     return {
@@ -65,7 +66,10 @@ let mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps,{ getUsers,unfollow,follow})(AuthRedirectComponent);
+export default compose(
+    connect(mapStateToProps,{getUsers,unfollow,follow}),
+    withAuthRedirect
+    )(UsersContainer);
 
 
 

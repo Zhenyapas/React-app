@@ -6,8 +6,11 @@ import classes  from './status.module.css';
 
 class Status extends React.Component {
 
+
+
 state = {
-    editMode : false,
+  editMode : false,
+  status: this.props.status
 }
 
 activateEditMode = () => {
@@ -16,15 +19,29 @@ activateEditMode = () => {
   })
 }
 deactivateEditMode = () => {
+  this.setState({
+      editMode : false
+  })
+  this.props.updateStatusProfile(this.state.status);
+  
+  }
+onStatusChange = (e) => {
+  this.setState({
+      status : e.currentTarget.value
+  })
+}
+componentDidUpdate(prevProps,prevState){
+  if(prevProps.status !== this.props.status){
     this.setState({
-        editMode : false
+      status: this.props.status
     })
   }
+}
 
 render() {
     return <>
-    { (!this.state.editMode) && <div className='Content'> <span onDoubleClick={(this.props.isMainUser) && this.activateEditMode} >{this.props.status}</span></div>}
-    { (this.state.editMode) && <div className="Content"><input autoFocus={true} onBlur={this.deactivateEditMode} value={this.props.status} /></div>}
+    { (!this.state.editMode) && <div className='Content'> <span onDoubleClick={(this.props.isMainUser) && this.activateEditMode } >{ this.props.status || ' ***' }</span></div>}
+    { (this.state.editMode) && <div className="Content"><input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status} /></div>}
     </>
 
 }

@@ -56,3 +56,26 @@
 .item a.active{
   color:#317EF6;
 }
+.logOut {
+  margin-top: 20px;
+  font-weight:600;
+  
+  width: 230px;
+  height: 31px;
+  background: rgba(227, 227, 247, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.nav_profile_logout{
+  margin-top: 60px;
+  font-weight:600;
+  
+  width: 230px;
+  height: 31px;
+  background: rgba(227, 227, 247, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

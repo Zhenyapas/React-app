@@ -21,7 +21,7 @@ function Profile(props) {
     <section>
        
         <div className='Content profileAvatar '><img src={props.profile.photos.large}></img> </div>
-        <Status status="Hello my friends" {...props}/>
+        <Status  {...props} />
         
         <div className='Content'>Hello, {props.profile.fullName}. Whats new?</div>
         <div className='Content'>{props.profile.contacts.instagram}</div>

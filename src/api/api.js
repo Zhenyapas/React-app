@@ -5,7 +5,7 @@ const instance = axios.create({
     withCredentials:true,
     baseURL:'https://social-network.samuraijs.com/api/1.0/',
     headers: {
-        'API-KEY':'e5f5c064-7205-4d67-9ab2-9013a651f465'
+        'API-KEY':'68644ca4-f82b-4ce5-80ab-bdf757ea9237'
     }
 
 });
@@ -14,7 +14,7 @@ const folowAndUnfollow = axios.create({
     withCredentials:true,
     baseURL:'https://social-network.samuraijs.com/api/1.0/follow/',
     headers: {
-        'API-KEY':'e5f5c064-7205-4d67-9ab2-9013a651f465'
+        'API-KEY':'68644ca4-f82b-4ce5-80ab-bdf757ea9237'
     }
 
 });
@@ -22,7 +22,7 @@ const logIn = axios.create({
 
     withCredentials:true,
     headers: {
-        'API-KEY':'e5f5c064-7205-4d67-9ab2-9013a651f465'
+        'API-KEY':'68644ca4-f82b-4ce5-80ab-bdf757ea9237'
     }
 
 });
@@ -55,6 +55,19 @@ export const usersAPI = {
     },
     getUserProfile(userId){
 
+        return profileAPI.getUserProfile(userId);
+    },
+    authLogIn() {
+
+        return loginAPI.authLogIn();
+
+    }
+}
+
+export const profileAPI = {
+
+    getUserProfile(userId){
+
         return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId)
         .then((response) => {
             
@@ -62,6 +75,24 @@ export const usersAPI = {
              
          });
     },
+    getStatusProfile(userId){
+        return logIn.get(`https://social-network.samuraijs.com/api/1.0/profile/status/`+ userId)
+        .then ((response) => {
+
+            return response;
+        });
+    },
+    updateStatusProfile(status){
+        return logIn.put(`https://social-network.samuraijs.com/api/1.0/profile/status`, {status})
+        .then ((response) => {
+
+            return response;
+        });
+    },
+
+}
+export const loginAPI = {
+
     authLogIn() {
 
         return logIn.get(`https://social-network.samuraijs.com/api/1.0/auth/me`)
@@ -71,7 +102,15 @@ export const usersAPI = {
              
          });
 
-    }
-}
+    },
 
+    logIn(email,password, rememberMe = false){
+        return logIn.post(`https://social-network.samuraijs.com/api/1.0/auth/login`, {email, password, rememberMe});
+    },
+    
+    logOut(){
+        return logIn.delete(`https://social-network.samuraijs.com/api/1.0/auth/login`);
+    },
+
+}
 

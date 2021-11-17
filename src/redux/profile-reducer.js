@@ -1,4 +1,4 @@
-import {usersAPI} from '../api/api'; 
+import {usersAPI,profileAPI} from '../api/api'; 
 
 let initialState = {
 
@@ -21,6 +21,8 @@ let initialState = {
         textareaPosts: '',
 
         profile:[],
+
+        status:'',
 
         isMainUser: true,
        
@@ -57,7 +59,14 @@ const profileReducer = (state = initialState, action) => {
              ...state,
             isMainUser : action.isItMain
           }
-          return stateCopy;                
+          return stateCopy;
+      case 'SET_STATUS_PROFILE' :
+          stateCopy = {
+              ...state,
+             status : action.status
+          }
+          return stateCopy;
+                          
        default:
           return state;   
     } 
@@ -72,6 +81,7 @@ export const updateNewPostText = (text) => ({type:'UPDATE-NEW-POST-TEXT',text});
 export const addPost = () => ({type:'ADD-POST'});
 export const setUserProfile = (profile) => ({type:'SET_PROFILE_USER',profile});
 export const isMainUserAC = (isItMain) =>({type:'IS_MAIN_USER',isItMain});
+export const setStatusProfile = (status) => ({type:'SET_STATUS_PROFILE',status});
 
 export const getUserProfile = (id) => {
     
@@ -87,3 +97,36 @@ export const getUserProfile = (id) => {
 
     }   
 }
+
+export const getStatusProfile = (id) => {
+    
+  return (dispatch) => {
+
+            profileAPI.getStatusProfile(id)
+            .then(response => {
+                
+                
+                dispatch(setStatusProfile(response.data));
+                
+            });
+
+    }   
+}
+
+export const updateStatusProfile = (status) => {
+    
+  return (dispatch) => {
+
+            profileAPI.updateStatusProfile(status)
+            .then(response => {
+                
+              if(response.data.resultCode === 0){
+
+                dispatch(setStatusProfile(status));
+
+              }
+            });
+
+    }   
+}
+

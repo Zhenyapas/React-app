@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Navigation from './Navigation';
-import { authLogIn } from '../../redux/auth-reducer';
-import { compose } from 'redux';
+import { authLogIn, LogOut} from '../../redux/auth-reducer';
 
 
 
@@ -13,6 +12,8 @@ class NavigationContainer extends React.Component {
         this.props.authLogIn();
 
     }
+
+   
 
     render() {
         return <Navigation {...this.props}  />
@@ -29,7 +30,8 @@ let mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps,{authLogIn})(NavigationContainer);
+export default connect(mapStateToProps,{authLogIn,LogOut})(NavigationContainer);
+
 
 
 

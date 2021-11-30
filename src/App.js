@@ -1,19 +1,32 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 import './App.css';
 import Login from './components/LogInPage/logInPage';
 import MessagesContainer from './components/Messages/MessagesContainer';
 import NavigationContainer from './components/Navigation/NavigationContainer';
-
+import loader from './assets/images/loader.svg'
 import ProfileContainer from './components/Profile/ProfileContainer'
 
 import UsersContainer from './components/Users/UsersContainer';
+import {initializeApp} from './redux/app-reducer';
 
 
 
 
 
-function App() {
+class App extends React.Component {
+
+componentDidMount = () => {
+
+  this.props.initializeApp();
+
+}
+
+render() {
+  if(!this.props.initialized) return <img className='loader' src={loader}></img> ;
   return (
     
     
@@ -33,4 +46,13 @@ function App() {
   );
 }
 
-export default App;
+
+}
+const mapStateToProps = (state) => {
+ return {
+   initialized: state.app.initialized
+ }
+}
+
+
+export default compose(withRouter, connect(mapStateToProps,{initializeApp}))(App);

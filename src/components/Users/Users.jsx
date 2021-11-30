@@ -49,9 +49,9 @@ function Users(props) {
 
                         
                         <ul className={`ulPages`}>
-                            {lust}
+                           {/*  {lust} */}
                             {pages}
-                            {next}
+                           {/*  {next} */}
                         </ul>
 
                         

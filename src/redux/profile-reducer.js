@@ -24,7 +24,7 @@ let initialState = {
 
         status:'',
 
-        isMainUser: true,
+        isMainUser: false,
        
 }
 const profileReducer = (state = initialState, action) => {

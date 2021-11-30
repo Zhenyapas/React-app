@@ -5,7 +5,7 @@ import { usersAPI, loginAPI } from "../api/api";
 
            
 let initialState = {
-    id:19589,
+    id:null,
     email:null,
     login:null,
     isAuth:null,
@@ -45,7 +45,7 @@ export const authLogIn = () => {
 
     return (dispatch) => {
 
-        loginAPI.authLogIn()
+       return loginAPI.authLogIn()
         .then((response) => {
 
             if (response.data.resultCode === 0) {

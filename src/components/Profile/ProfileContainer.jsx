@@ -21,10 +21,10 @@ import { compose } from 'redux';
     
     let userId = this.props.match.params.userId;
     
-    
-    
     if (!userId) { 
       userId = this.props.meUserId ;
+    }
+    if (userId == this.props.meUserId) { 
       this.props.isMainUserAC(true);
     } else {
       this.props.isMainUserAC(false);
@@ -38,7 +38,15 @@ import { compose } from 'redux';
 
    }
 
+   componentDidUpdate(prevProps) {
+     
+    if (prevProps.match.params.userId !== this.props.match.params.userId) {
+        
+        this.props.getUserProfile(this.props.match.params.userId);
+        this.props.getStatusProfile(this.props.match.params.userId);
 
+    }
+  }
   
   render(){
     return <Profile {...this.props} updateStatusProfile={this.props.updateStatusProfile} meUserId={this.props.meUserId} />

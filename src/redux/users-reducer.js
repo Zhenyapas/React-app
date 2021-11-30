@@ -96,7 +96,7 @@ export const setTotalUsersCount = (totalCount) => ({type:'SET_TOTAL_USERS_COUNT'
 export const preloaderIsFetching = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching});
 export const isButtonDisabled = (isFetch) => ({type:'IS_BUTTON_DISABLED', isFetch});
 
-export const getUsers = (currentPage,pageSize) => {
+export const requestUsers = (currentPage,pageSize) => {
     
   return (dispatch) => {
 

@@ -3,6 +3,7 @@ import './Posts.css';
 
 
 function Posts(props) {
+    console.log('RENDER!')
     let newPostElement=React.createRef();
     let addPost = () => {
         

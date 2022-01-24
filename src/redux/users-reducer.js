@@ -71,7 +71,7 @@ const usersReducer = (state = initialState, action) => {
            
              stateCopy = {
                  ...state,
-                 totalUsersCount: (action.totalCount < 50) ? action.totalCount : 42
+                 totalUsersCount:  action.totalCount 
                 }
                 return stateCopy;   
         case 'IS_BUTTON_DISABLED' :

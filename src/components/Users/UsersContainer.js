@@ -41,10 +41,11 @@ class UsersContainer extends React.Component {
         
         {this.props.isFetching ? <img className='loader' src={loader}></img> : null}
 
-        <section> 
+       <section> 
         <Users {...this.props} setCurrentPage={this.setCurrentPage}
              />
-        </section>     
+        </section> 
+         
        </>
 
      )

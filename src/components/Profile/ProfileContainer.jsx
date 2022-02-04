@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { isMainUserAC,getUserProfile,getStatusProfile,updateStatusProfile} from '../../redux/profile-reducer';
+import { isMainUserAC,getUserProfile,getStatusProfile,updateStatusProfile,uploadPhoto} from '../../redux/profile-reducer';
 import { setAuthUserData} from '../../redux/auth-reducer';
 import Profile from './Profile.jsx';
 import { withRouter } from 'react-router-dom';
@@ -44,6 +44,7 @@ import { compose } from 'redux';
         
         this.props.getUserProfile(this.props.match.params.userId);
         this.props.getStatusProfile(this.props.match.params.userId);
+        this.props.isMainUserAC(true);
 
     }
   }
@@ -62,11 +63,10 @@ let mapStateToProps = (state) => {
   meUserId:state.auth.id,
   status:state.profilePage.status,
  
- 
-
   }
+
 };
-export default compose(connect(mapStateToProps, {isMainUserAC,setAuthUserData,getUserProfile,getStatusProfile,updateStatusProfile}),
+export default compose(connect(mapStateToProps, {isMainUserAC,setAuthUserData,getUserProfile,getStatusProfile,updateStatusProfile, uploadPhoto}),
                                withRouter,
                                withAuthRedirect)(ProfileContainer);
  

@@ -1,4 +1,4 @@
-import { usersAPI, loginAPI } from "../api/api";
+import { usersAPI, loginAPI,profileAPI } from "../api/api";
 
 
 
@@ -9,6 +9,7 @@ let initialState = {
     email:null,
     login:null,
     isAuth:null,
+    
     
 }
 const usersReducer = (state = initialState, action) => {
@@ -30,7 +31,14 @@ const usersReducer = (state = initialState, action) => {
                  ...state,
                 isFetching : action.isFetching
              }
-             return stateCopy;  
+             return stateCopy;
+         
+         case 'SET_USER_PHOTO' :
+             stateCopy = {
+                    ...state,
+                   photos:action.data
+             }
+             return stateCopy;        
              
         default:
              return state;
@@ -40,6 +48,7 @@ const usersReducer = (state = initialState, action) => {
 
 export const setAuthUserData = (id, email, login, isAuth)  => ({type: 'SET_USER_DATA', data:{id, email, login, isAuth}});
 export const preloaderIsFetching = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching});
+export const setMainUserData = (data) => ({type:'SET_USER_PHOTO', data});
 
 export const authLogIn = () => {
 
@@ -91,7 +100,20 @@ export const LogOut = () => {
 
     }
 }
-
+export const getMainUserData = (id) => {
+    
+    return (dispatch) => {
+  
+              profileAPI.getUserProfile(id)
+              .then(response => {
+                  
+                  
+                  dispatch(setMainUserData(response.data.photos));
+                  
+              });
+  
+      }   
+  }
 
 
 export default usersReducer;

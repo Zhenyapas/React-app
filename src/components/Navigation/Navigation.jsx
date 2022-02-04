@@ -13,11 +13,18 @@ function Navigation(props) {
         props.LogOut();
     }
 
+    let photo;
+   
+     if (props.photo) photo=[<img src={props.photo.small}></img>];
+
+     
+
   
    
     return(
         <nav>
-            <div className = {classes.nav_avatar}></div>
+            <div className = {classes.nav_avatar}>{photo}</div>
+            
             
             { (props.isAuth == true ) ?  <div className = {classes.nav_profile_name}>{props.name}</div> :
            <div className = {classes.nav_profile_name}><NavLink to = '/login' activeClassName={classes.active}>Sign in</NavLink></div> }

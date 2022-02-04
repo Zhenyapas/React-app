@@ -26,7 +26,14 @@ const logIn = axios.create({
     }
 
 });
+const profileInstance = axios.create({
 
+    withCredentials:true,
+    headers: {
+        'API-KEY':'68644ca4-f82b-4ce5-80ab-bdf757ea9237'
+    }
+
+});
 
 
 export const usersAPI = {
@@ -68,7 +75,7 @@ export const profileAPI = {
 
     getUserProfile(userId){
 
-        return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId)
+        return profileInstance.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId)
         .then((response) => {
             
             return response;
@@ -76,20 +83,34 @@ export const profileAPI = {
          });
     },
     getStatusProfile(userId){
-        return logIn.get(`https://social-network.samuraijs.com/api/1.0/profile/status/`+ userId)
+        return profileInstance.get(`https://social-network.samuraijs.com/api/1.0/profile/status/`+ userId)
         .then ((response) => {
 
             return response;
         });
     },
     updateStatusProfile(status){
-        return logIn.put(`https://social-network.samuraijs.com/api/1.0/profile/status`, {status})
+        return profileInstance.put(`https://social-network.samuraijs.com/api/1.0/profile/status`, {status})
         .then ((response) => {
 
             return response;
         });
     },
+    updatePhotoProfile(file){
+        var formData = new FormData();
+        formData.append('image', file);
+        return profileInstance.post(`https://social-network.samuraijs.com/api/1.0/profile/photo`,formData, {
 
+            headers: {
+                'Content-Type':'multipart/form-data'
+            }
+
+        })
+        .then ((response) => {
+
+            return response;
+        });
+    }
 }
 export const loginAPI = {
 

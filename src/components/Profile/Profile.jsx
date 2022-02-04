@@ -5,6 +5,7 @@ import loader from '../../assets/images/loader.svg';
 import './Profile.css';
 import Status from './Status/Status.jsx';
 import StatusWithHooks from './Status/StatusWithHooks.jsx';
+import PhotoWithHooks from './Photo/PhotoWithHooks.jsx';
 
 
   
@@ -20,15 +21,15 @@ function Profile(props) {
     return(
 
     <section>
-       
-        <div className='Content profileAvatar '><img src={props.profile.photos.large}></img> </div>
-        <StatusWithHooks  {...props} />
+        
+       <PhotoWithHooks {...props} />
+       <StatusWithHooks  {...props} />
         
         <div className='Content'>Hello, {props.profile.fullName}. Whats new?</div>
         <div className='Content'>{props.profile.contacts.instagram}</div>
 
         
-        {(props.isMainUser) ?  <PostsContainer /> : console.log(props.userId)}
+        {(props.isMainUser) &&  <PostsContainer />}
 
       
         

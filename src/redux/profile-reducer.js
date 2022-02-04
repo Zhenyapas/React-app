@@ -66,7 +66,12 @@ const profileReducer = (state = initialState, action) => {
              status : action.status
           }
           return stateCopy;
-                          
+
+      case 'UPDATE_PHOTO_PROFILE':
+          stateCopy = {
+            ...state, profile: { ...state.profile, photos: action.photos}
+          }
+        return stateCopy;                    
        default:
           return state;   
     } 
@@ -82,6 +87,7 @@ export const addPost = () => ({type:'ADD-POST'});
 export const setUserProfile = (profile) => ({type:'SET_PROFILE_USER',profile});
 export const isMainUserAC = (isItMain) =>({type:'IS_MAIN_USER',isItMain});
 export const setStatusProfile = (status) => ({type:'SET_STATUS_PROFILE',status});
+export const updatePhotoProfile = (photos) => ({type:'UPDATE_PHOTO_PROFILE', photos});
 
 export const getUserProfile = (id) => {
     
@@ -130,3 +136,14 @@ export const updateStatusProfile = (status) => {
     }   
 }
 
+export const uploadPhoto = (file) => {
+
+  return (dispatch) => {
+        profileAPI.updatePhotoProfile(file)
+        .then(response =>  {
+          if(response.data.resultCode === 0) {
+           dispatch(updatePhotoProfile(response.data.data.photos))
+          }
+        });
+  }
+}

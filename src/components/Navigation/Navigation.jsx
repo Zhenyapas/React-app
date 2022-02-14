@@ -15,7 +15,7 @@ function Navigation(props) {
 
     let photo;
    
-     if (props.photo) photo=[<img src={props.photo.small}></img>];
+     if (props.photo && props.isAuth) photo=[<img src={props.photo.small}></img>];
 
      
 

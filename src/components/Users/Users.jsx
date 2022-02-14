@@ -4,11 +4,67 @@ import './users.css';
 
 
 
-
-
-
-
 function Users(props) {
+
+    let [editMode, setEditMode] = useState(false);
+
+
+
+    return ( 
+
+     <>
+            <div className='Dialogs_container'>
+                <section className='Section_Dialogs'>
+                    <div className='Content_dialogs'>
+                        <UserSearch {...props} />
+                        <UsersPaginator {...props} />
+                    </div>
+                </section>
+            </div>
+     </>
+    )
+}
+
+
+function UserSearch (props) {
+
+    let [value, setValue] = useState(props.searchingValue)
+
+    useEffect(() => {
+        setValue(props.searchingValue)
+    }, [props.searchingValue])
+
+    const updateValue = (e) => {
+
+        props.updateSearchText(e.currentTarget.value);
+        props.searchingUserByName(e.currentTarget.value);
+
+    }
+
+    const clearValue = () => {
+        
+        setValue('');
+        props.updateSearchText('');
+
+    }
+
+
+    return (
+            
+      <>
+   
+            <div id='userTitle'>Users</div>
+            
+            <input className='search' type='textarea' autoFocus value={value} onChange={updateValue} onBlur={clearValue} ></input>
+    </>
+        
+       
+    )
+}
+
+
+
+function UsersPaginator(props) {
 
     let usersList = props.users.map( (obj) => <User  u={obj}
     unfollow={props.unfollow} follow={props.follow}   />);
@@ -64,38 +120,29 @@ function Users(props) {
     return(
          
            
-            <div className='Dialogs_container'>
-                <section className='Section_Dialogs'>
-                    <div className='Content_dialogs'>
+        <>
 
-                        <div id='userTitle'>Users</div>
-
-                         
-
-
-                        <div className='dialogs_wrapper'> 
-                        
-                            {usersList}
-
-                        </div>
-
-                        
-                        <ul className={`ulPages`}>
+            <ul className={`ulPages`}>
                    
-                            {(!props.isFetching) ? pages2 : 'Download pages wait '}
-                      
-                        </ul>
+                {(!props.isFetching) ? pages2 : 'Download pages wait '}
+             
+             </ul>
+
+
+             <div>
+
+                {usersList}
+
+             </div>
 
                         
+             <ul className={`ulPages`}>
+                   
+                {(!props.isFetching) ? pages2 : 'Download pages wait '}
+                      
+            </ul>
 
-
-                    
-                    </div>
-                </section>
-
-              
-
-            </div>
+         </>
 
      )
      

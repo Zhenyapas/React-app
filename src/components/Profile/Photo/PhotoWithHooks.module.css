@@ -24,6 +24,35 @@
     
     
 }
-.profilePhoto {
-    height: 200px;
+.downloadPhoto{
+    height: 100px;
+    width: 500px;
+    display: flex;
+    justify-content: left;
+    align-content: center;
+
+
+}
+.buttonClose {
+    height: 20px;
+    width: 50px;
+    background-color: chartreuse;
+    align-self: center;
+    margin-right: 200px;
+    box-shadow: 0px 9.05305px 18.1061px #EDEDF5;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color:white ;
+    border-style: none;  
+    padding: 10px 10px;
+
+}
+
+
+.buttonClose :hover {
+    box-shadow: none;
+     color:#317EF6;
+    transition: 0.3s;
+    
+    background-color:white ;
 }

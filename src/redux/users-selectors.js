@@ -16,3 +16,6 @@ export const getIsFetching = (state) => {
 export const getIsDisabled = (state) => {
     return state.usersPage.isDisabled;
 }
+export const getSearchingUser = (state) => {
+    return state.usersPage.searchValue;
+}

@@ -44,6 +44,12 @@ export const usersAPI = {
         return response.data;
          })
     },
+    getUserByName(str){
+        return instance.get(`users?term=${str}`)
+        .then((response) => {
+        return response.data;
+        })
+    },
     unfollowUser(id) {
     
         return folowAndUnfollow.delete(`${id}`)

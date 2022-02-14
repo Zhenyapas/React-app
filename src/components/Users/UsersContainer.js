@@ -2,7 +2,7 @@ import React from 'react';
 import Users from './Users';
 import loader from '../../assets/images/loader.svg';
 import { connect } from 'react-redux';
-import {unfollow,follow,requestUsers} from '../../redux/users-reducer';
+import {unfollow,follow,requestUsers,updateSearchText,searchingUserByName} from '../../redux/users-reducer';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { getUsers, getTotalUsersCount,getPageSize,getCurrentPage,getIsFetching,getIsDisabled} from '../../redux/users-selectors';
@@ -29,6 +29,8 @@ class UsersContainer extends React.Component {
         this.props.requestUsers(pageNumber,this.props.pageSize);
 
     }
+
+
     
       
     
@@ -63,13 +65,14 @@ let mapStateToProps = (state) => {
         currentPage:getCurrentPage(state),
         isFetching:getIsFetching(state),
         isDisabled:getIsDisabled(state),
+        searchingValue:state.usersPage.searchingValue,
        
        
     }
 };
 
 export default compose(
-    connect(mapStateToProps,{requestUsers,unfollow,follow}),
+    connect(mapStateToProps,{requestUsers,unfollow,follow,updateSearchText,searchingUserByName}),
     withRouter
     )(UsersContainer);
 

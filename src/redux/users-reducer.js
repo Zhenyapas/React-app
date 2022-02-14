@@ -5,6 +5,7 @@ let initialState = {
     totalUsersCount: null,
     currentPage: 1,
     isFetching:false,
+    searchingValue: '',
     
     
 
@@ -81,7 +82,13 @@ const usersReducer = (state = initialState, action) => {
                  isDisabled: action.isFetch 
                 }
                 return stateCopy;           
-             
+        case 'UPDATE-SEARCH-TEXT' :
+
+             stateCopy  = {
+                 ...state,
+                 searchingValue: action.text
+             }
+                return stateCopy;
         default:
              return state;
     }
@@ -95,6 +102,7 @@ export const setUsers = (users) => ({type: 'SET_USERS', users});
 export const setTotalUsersCount = (totalCount) => ({type:'SET_TOTAL_USERS_COUNT', totalCount});
 export const preloaderIsFetching = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching});
 export const isButtonDisabled = (isFetch) => ({type:'IS_BUTTON_DISABLED', isFetch});
+export const updateSearchText = (text) => ({type:'UPDATE-SEARCH-TEXT',text});
 
 export const requestUsers = (currentPage,pageSize) => {
     
@@ -111,6 +119,17 @@ export const requestUsers = (currentPage,pageSize) => {
             });
 
     }   
+}
+export const searchingUserByName = (text) => {
+    
+    return (dispatch) => {
+            dispatch(preloaderIsFetching(true));
+            usersAPI.getUserByName(text)
+            .then(data => {
+                dispatch(preloaderIsFetching(false));
+                dispatch(setUsers(data.items));
+            })
+    }
 }
 export const unfollow = (e, id) => {
     

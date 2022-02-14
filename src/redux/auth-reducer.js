@@ -50,6 +50,7 @@ export const setAuthUserData = (id, email, login, isAuth)  => ({type: 'SET_USER_
 export const preloaderIsFetching = (isFetching) => ({type:'PRELOADER_IS_FETCHING', isFetching});
 export const setMainUserData = (data) => ({type:'SET_USER_PHOTO', data});
 
+
 export const authLogIn = () => {
 
     return (dispatch) => {

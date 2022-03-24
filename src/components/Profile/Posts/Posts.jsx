@@ -1,41 +1,59 @@
 import React from 'react';
+import { Field, reduxForm, reset } from 'redux-form';
+import { Textarea,Input } from '../../../forms-control/FormsControl';
+import { maxLength } from '../../../forms-validators/FormsValidators.jsx';
 import './Posts.css';
 
+let flag = false;
+const textSize = (size) => (text,previous) =>  text.length>size ? previous : text;
+const text20 = textSize(20);
+
+
+
+
+
+const textLength20 = maxLength(20);
+
+const TextareaForm = (props) => {
+
+   
+   
+    return (
+        <>
+        <form onSubmit={props.handleSubmit}>
+            
+                <Field className='textarea_1' name='post' component={Textarea}  validate={[textLength20]} placeholder='What is on your mind' />
+            
+
+
+            <div className='button_section'>
+                <button className='button_to_click Post' disabled={props.pristine} type='submit'>Add Post</button>
+            </div>
+        </form>
+        </>
+    )
+
+}
+
+const TextareaReduxForm = reduxForm({form:'post'})(TextareaForm);
 
 function Posts(props) {
     console.log('RENDER!')
     let newPostElement=React.createRef();
-    let addPost = () => {
+    let addPost = (data) => {
         
+        props.updateNewPostText(data.post);
         props.addPost();
-       
-        
         
     }
-    let changeTextarea = () => {
-       let text=newPostElement.current.value;
-       props.updateNewPostText(text);
-      
-      
 
-    }
     return (
-        <form>
-            <div class="textarea_section">
-                <textarea  ref={newPostElement} onChange={changeTextarea} value={props.textareaPosts} className="textarea_1"  placeholder="What's on your mind?">
-              
-                </textarea>
-            </div>
-
-            <div className='button_section'>
-                <div className='button_to_click File'>Add File</div>
-                <div className='button_to_click Post' onClick={addPost}>Add Post</div>
-            </div>
-
-           
-          
-        </form> 
+        <>
+            <TextareaReduxForm onSubmit={addPost} />
+        </>
     );
 }
+
+
 
 export default Posts;

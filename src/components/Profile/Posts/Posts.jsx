@@ -1,8 +1,9 @@
 import React from 'react';
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { Textarea,Input } from '../../../forms-control/FormsControl';
 import { maxLength } from '../../../forms-validators/FormsValidators.jsx';
 import './Posts.css';
+
 
 let flag = false;
 const textSize = (size) => (text,previous) =>  text.length>size ? previous : text;
@@ -44,6 +45,7 @@ function Posts(props) {
         
         props.updateNewPostText(data.post);
         props.addPost();
+        props.resetInput();
         
     }
 

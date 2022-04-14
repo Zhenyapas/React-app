@@ -78,7 +78,7 @@ export const LogIn = (email,password,rememberMe) => {
             if (response.data.resultCode === 0) {
                 dispatch(authLogIn());
             } else  {
-                dispatch( stopSubmit('login', {_error: 'Email or Password wrong!'}))
+                dispatch( stopSubmit('login', {_error: 'Email or password wrong!'}))
             }
 
         });

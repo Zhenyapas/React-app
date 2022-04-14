@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
+import { Redirect, Route, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import './App.css';
 import Login from './components/LogInPage/logInPage';
@@ -12,6 +12,7 @@ import ProfileContainer from './components/Profile/ProfileContainer'
 
 import UsersContainer from './components/Users/UsersContainer';
 import {initializeApp} from './redux/app-reducer';
+import { withAuthRedirect } from './hoc/withAuthRedirect';
 
 
 

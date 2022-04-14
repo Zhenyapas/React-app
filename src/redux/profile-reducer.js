@@ -1,4 +1,5 @@
 import {usersAPI,profileAPI} from '../api/api'; 
+import {reset} from 'redux-form';
 
 let initialState = {
 
@@ -88,6 +89,12 @@ export const setUserProfile = (profile) => ({type:'SET_PROFILE_USER',profile});
 export const isMainUserAC = (isItMain) =>({type:'IS_MAIN_USER',isItMain});
 export const setStatusProfile = (status) => ({type:'SET_STATUS_PROFILE',status});
 export const updatePhotoProfile = (photos) => ({type:'UPDATE_PHOTO_PROFILE', photos});
+
+export const resetInput = () => {
+  return (dispatch) => {
+    dispatch(reset('post'));
+  }
+}
 
 export const getUserProfile = (id) => {
     

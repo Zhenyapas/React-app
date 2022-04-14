@@ -18,7 +18,7 @@ const LoginForm = (props) => {
         <div>
             <Field placeholder={'Password'} name={'password'} component={Input} type={'password'}/>
         </div>
-        {(props.error) ? <div>{props.error}</div> : null}
+        {(props.error) ? <div className={classes.error}>{props.error}</div> : null}
         <button className={classes.btn} disabled={props.pristine || props.submitting} type={'submit'}>Login</button>
         
         </form>

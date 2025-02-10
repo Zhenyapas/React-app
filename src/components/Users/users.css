@@ -1,0 +1,43 @@
+.ulPages {
+    text-decoration: none;
+    list-style: none;
+    font-size: 20px;
+    display: flex;
+    
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0;
+    min-height: 35px;
+    margin-top: 20px;
+    margin-left: 5px;
+    
+
+}
+.ulPages li {
+    margin-right: 25px;
+    cursor: pointer;
+   
+   
+}
+.ulPages li:hover {
+  color: #317EF6 ;
+  font-weight: 700;
+  
+}
+ul .selectedPage {
+    color: #317EF6;
+    font-weight: 700;
+    font-size: 25px;
+  }
+a {
+  text-decoration: none;
+}    
+.search{
+  padding: 5px 10px;
+  margin-top:40px;
+  margin-bottom: 20px;
+  font-size: 25px;
+  width: 58%;
+  
+
+}

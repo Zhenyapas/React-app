@@ -1,31 +1,61 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { Textarea,Input } from '../../../forms-control/FormsControl';
+import { maxLength } from '../../../forms-validators/FormsValidators.jsx';
 import './Posts.css';
 
 
-function Posts(props) {
-    let newPostElement=React.createRef();
-    let addPost = () =>{
-        let text=newPostElement.current.value;
-         alert(text);
-        
-    }
+let flag = false;
+const textSize = (size) => (text,previous) =>  text.length>size ? previous : text;
+const text20 = textSize(20);
+
+
+
+
+
+const textLength20 = maxLength(20);
+
+const TextareaForm = (props) => {
+
+   
+   
     return (
-        <form>
-            <div class="textarea_section">
-                <textarea  ref={newPostElement}  className="textarea_1"  placeholder="What's on your mind?">
-              
-                </textarea>
-            </div>
+        <>
+        <form onSubmit={props.handleSubmit}>
+            
+                <Field className='textarea_1' name='post' component={Textarea}  validate={[textLength20]} placeholder='What is on your mind' />
+            
+
 
             <div className='button_section'>
-                <div className='button_to_click File'>Add File</div>
-                <div className='button_to_click Post' onClick={addPost}>Add Post</div>
+                <button className='button_to_click Post' disabled={props.pristine} type='submit'>Add Post</button>
             </div>
+        </form>
+        </>
+    )
 
-           
-          
-        </form> 
+}
+
+const TextareaReduxForm = reduxForm({form:'post'})(TextareaForm);
+
+function Posts(props) {
+    console.log('RENDER!')
+    let newPostElement=React.createRef();
+    let addPost = (data) => {
+        
+        props.updateNewPostText(data.post);
+        props.addPost();
+        props.resetInput();
+        
+    }
+
+    return (
+        <>
+            <TextareaReduxForm onSubmit={addPost} />
+        </>
     );
 }
+
+
 
 export default Posts;

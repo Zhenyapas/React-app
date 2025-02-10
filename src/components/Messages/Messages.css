@@ -16,7 +16,7 @@
     flex-basis: 35%;
     
     height: 100vh;
-    overflow-y:scroll ;
+   
     
    
 }
@@ -50,6 +50,70 @@
     margin-top:40px;
     font-size: 30px;
     width: 90%;
+    min-height: 82vh;
+    overflow-y:scroll ;
    
     
+}
+.Section_addMessage{
+    width:90%;
+    margin-left: 40px;
+    
+    height: 20vh;
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+    
+}
+.addMessage_wrapper{
+      
+    border-radius: 7px;
+    cursor: pointer;
+    background-color:white ;
+    box-shadow: 0px 9.05305px 18.1061px #EDEDF5;
+    width: 100%;
+    display: flex;
+    padding: 10px 10px;
+    min-height: 50px;
+    align-items: center;
+    
+    
+    
+    
+    
+
+}
+.addMessage_textarea{
+    padding: 10px 10px;
+   min-height: 30px;
+    flex-basis: 90%;
+    
+    resize:none;
+    height:10px;
+    border:0px;
+    outline:0px;
+    background-color: rgb(255, 255, 255);
+}
+.addMessage_button{
+    box-shadow: 0px 9.05305px 18.1061px #EDEDF5;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color:white ;
+    text-align: center;
+    width: 50px;
+    font-size: 12px;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+    padding: 10px 10px;
+}
+.addMessage_button:hover{
+    background-color:rgba(26, 41, 175, 0.63) ;
+    transition: 0.7s;
+    color: white;
 }

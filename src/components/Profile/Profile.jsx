@@ -1,20 +1,36 @@
 import React from 'react';
 import MyPost from './Posts/MyPost.jsx';
-import Posts from './Posts/Posts.jsx';
+import PostsContainer from './Posts/PostsContainer.js';
+import loader from '../../assets/images/loader.svg';
 import './Profile.css';
+import Status from './Status/Status.jsx';
+import StatusWithHooks from './Status/StatusWithHooks.jsx';
+import PhotoWithHooks from './Photo/PhotoWithHooks.jsx';
+
 
   
   
 function Profile(props) {
   
-  let my_post=props.state.postInfo.map( (el) => <MyPost likes={el.likes} posts={el.post}/>);
-  
+  let my_post=props.postInfo.map( (el) => <MyPost likes={el.likes} posts={el.post}/>);
+ 
+    if(!props.profile.photos) {
+      return <img className='loader' src={loader}></img>
+    }
+    
     return(
 
     <section>
-        <div className='Content'>Hello, {props.state.myName.name}. Whats new?</div>
+        
+       <PhotoWithHooks {...props} />
+       <StatusWithHooks  {...props} />
+        
+        <div className='Content'>Hello, {props.profile.fullName}. Whats new?</div>
+        <div className='Content'>{props.profile.contacts.instagram}</div>
 
-        <Posts state={props.state}/>
+        
+        {(props.isMainUser) &&  <PostsContainer />}
+
       
         
 
